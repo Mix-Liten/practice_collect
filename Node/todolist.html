@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="inputArea" placeholder="請輸入代辦事項">
+    <input type="button" id="send" value="送出">
+    <ul id="list"></ul>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBugGJ1e1KCBYw8AuHX8C2MEuw3DPR6A-E",
+            authDomain: "nodepractice-9a41f.firebaseapp.com",
+            databaseURL: "https://nodepractice-9a41f.firebaseio.com",
+            projectId: "nodepractice-9a41f",
+            storageBucket: "nodepractice-9a41f.appspot.com",
+            messagingSenderId: "998415922379"
+        };
+        firebase.initializeApp(config);
+
+        // const ref = firebase.database().ref();
+        const inputArea = document.querySelector('#inputArea');
+        const send = document.querySelector('#send');
+        const list = document.querySelector('#list');
+        const todos = firebase.database().ref('todos');
+
+        inputArea.addEventListener('keyup', function (e) {
+            if (e.keyCode == 13) {
+                todos.push({
+                    content: inputArea.value
+                });
+                inputArea.value = '';
+            }
+        });
+
+        send.addEventListener('click', function (e) {
+            todos.push({
+                content: inputArea.value
+            });
+            inputArea.value = '';
+        });
+
+        list.addEventListener('click', function (e) {
+            let key = e.target.dataset.key;
+            // console.log(e.target.nodeName);
+            if (e.target.nodeName = "BUTTON") {
+                todos.child(key).remove();
+                // console.log(key);
+            }
+        });
+
+        todos.on('value', function (snapshot) {
+            let str = '';
+            let data = snapshot.val();
+            for (let item in data) {
+                str += `<li>${data[item].content} <button data-key='${item}'>刪除</button></li>`;
+            }
+            list.innerHTML = str;
+        });
+    </script>
+</body>
+
+</html>

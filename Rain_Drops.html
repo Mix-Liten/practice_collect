@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #30336b;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .circle {
+      animation: grow 3s linear;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    @keyframes grow {
+      to {
+        opacity: 0;
+        transform: scale(5);
+      }
+    }
+  </style>
+  <title>Rain Drops</title>
+</head>
+
+<body>
+  <script>
+    function createCircle() {
+      const circleEl = document.createElement('div')
+      circleEl.classList.add('circle')
+      const styleObj = {
+        top: `${Math.random() * innerHeight}px`,
+        left: `${Math.random() * innerWidth}px`,
+        borderColor: `rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Number(Math.random().toFixed(1))})`,
+        height: `${Math.random()*50 + 20}px`,
+      }
+      for (let style in styleObj) {
+        circleEl['style'][style] = styleObj[style]
+      }
+      circleEl['style']['width'] = circleEl['style']['height']
+      document.body.appendChild(circleEl);
+
+      setTimeout(() => {
+        circleEl.remove()
+      }, 3000)
+    }
+
+    setInterval(createCircle, 150)
+  </script>
+</body>
+
+</html>
