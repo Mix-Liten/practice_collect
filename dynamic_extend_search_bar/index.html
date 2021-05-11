@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>dynamic_extend_search_bar</title>
+  </head>
+  <body>
+    <div class="search">
+      <div class="icon"></div>
+      <div class="input-wrapper">
+        <input id="customInput" type="text" placeholder="Search" />
+        <span
+          class="clear"
+          onclick="document.getElementById('customInput').value = ''"
+        ></span>
+      </div>
+    </div>
+
+    <script>
+      const search = document.querySelector(".search");
+      const icon = document.querySelector(".icon");
+      icon.onclick = () => search.classList.toggle("active");
+    </script>
+  </body>
+</html>
