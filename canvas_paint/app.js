@@ -1,6 +1,6 @@
 // Reference to the canvas element
 let canvas;
-// Context provides functions used for drawing and 
+// Context provides functions used for drawing and
 // working with Canvas
 let ctx;
 // Stores previously drawn image data to restore after
@@ -8,12 +8,12 @@ let ctx;
 let savedImageData;
 // Stores whether I'm currently dragging the mouse
 let dragging = false;
-let strokeColor = 'black';
-let fillColor = 'black';
+let strokeColor = "black";
+let fillColor = "black";
 let line_Width = 2;
 let polygonSides = 6;
 // Tool currently using
-let currentTool = 'brush';
+let currentTool = "brush";
 let canvasWidth = 600;
 let canvasHeight = 600;
 
@@ -39,27 +39,24 @@ class ShapeBoundingBox {
 // Holds x & y position where clicked
 class MouseDownPos {
   constructor(x, y) {
-    this.x = x,
-      this.y = y;
+    (this.x = x), (this.y = y);
   }
 }
 
 // Holds x & y location of the mouse
 class Location {
   constructor(x, y) {
-    this.x = x,
-      this.y = y;
+    (this.x = x), (this.y = y);
   }
 }
 
 // Holds x & y polygon point values
 class PolygonPoint {
   constructor(x, y) {
-    this.x = x,
-      this.y = y;
+    (this.x = x), (this.y = y);
   }
 }
-// Stores top left x & y and size of rubber band box 
+// Stores top left x & y and size of rubber band box
 let shapeBoundingBox = new ShapeBoundingBox(0, 0, 0, 0);
 // Holds x & y position where clicked
 let mousedown = new MouseDownPos(0, 0);
@@ -67,13 +64,13 @@ let mousedown = new MouseDownPos(0, 0);
 let loc = new Location(0, 0);
 
 // Call for our function to execute when page is loaded
-document.addEventListener('DOMContentLoaded', setupCanvas);
+document.addEventListener("DOMContentLoaded", setupCanvas);
 
 function setupCanvas() {
   // Get reference to canvas element
-  canvas = document.getElementById('my-canvas');
+  canvas = document.getElementById("my-canvas");
   // Get methods for manipulating the canvas
-  ctx = canvas.getContext('2d');
+  ctx = canvas.getContext("2d");
   ctx.strokeStyle = strokeColor;
   ctx.lineWidth = line_Width;
   // Execute ReactToMouseDown when the mouse is clicked
@@ -104,7 +101,7 @@ function GetMousePosition(x, y) {
   let canvasSizeData = canvas.getBoundingClientRect();
   return {
     x: (x - canvasSizeData.left) * (canvas.width / canvasSizeData.width),
-    y: (y - canvasSizeData.top) * (canvas.height / canvasSizeData.height)
+    y: (y - canvasSizeData.top) * (canvas.height / canvasSizeData.height),
   };
 }
 
@@ -126,23 +123,19 @@ function UpdateRubberbandSizeData(loc) {
 
   // If mouse is below where mouse was clicked originally
   if (loc.x > mousedown.x) {
-
     // Store mousedown because it is farthest left
     shapeBoundingBox.left = mousedown.x;
   } else {
-
     // Store mouse location because it is most left
     shapeBoundingBox.left = loc.x;
   }
 
   // If mouse location is below where clicked originally
   if (loc.y > mousedown.y) {
-
     // Store mousedown because it is closer to the top
     // of the canvas
     shapeBoundingBox.top = mousedown.y;
   } else {
-
     // Otherwise store mouse position
     shapeBoundingBox.top = loc.y;
   }
@@ -165,7 +158,7 @@ function radiansToDegrees(rad) {
     // Correct the bottom error by adding the negative
     // angle to 360 to get the correct result around
     // the whole circle
-    return (360.0 + (rad * (180 / Math.PI))).toFixed(2);
+    return (360.0 + rad * (180 / Math.PI)).toFixed(2);
   } else {
     return (rad * (180 / Math.PI)).toFixed(2);
   }
@@ -187,19 +180,23 @@ function getPolygonPoints() {
   // Stores all points in the polygon
   let polygonPoints = [];
 
-  // Each point in the polygon is found by breaking the 
+  // Each point in the polygon is found by breaking the
   // parts of the polygon into triangles
   // Then I can use the known angle and adjacent side length
   // to find the X = mouseLoc.x + radiusX * Sin(angle)
   // You find the Y = mouseLoc.y + radiusY * Cos(angle)
   for (let i = 0; i < polygonSides; i++) {
-    polygonPoints.push(new PolygonPoint(loc.x + radiusX * Math.sin(angle),
-      loc.y - radiusY * Math.cos(angle)));
+    polygonPoints.push(
+      new PolygonPoint(
+        loc.x + radiusX * Math.sin(angle),
+        loc.y - radiusY * Math.cos(angle)
+      )
+    );
 
     // 2 * PI equals 360 degrees
-    // Divide 360 into parts based on how many polygon 
-    // sides you want 
-    angle += 2 * Math.PI / polygonSides;
+    // Divide 360 into parts based on how many polygon
+    // sides you want
+    angle += (2 * Math.PI) / polygonSides;
   }
   return polygonPoints;
 }
@@ -230,7 +227,12 @@ function drawRubberbandShape(loc) {
     ctx.stroke();
   } else if (currentTool === "rectangle") {
     // Creates rectangles
-    ctx.strokeRect(shapeBoundingBox.left, shapeBoundingBox.top, shapeBoundingBox.width, shapeBoundingBox.height);
+    ctx.strokeRect(
+      shapeBoundingBox.left,
+      shapeBoundingBox.top,
+      shapeBoundingBox.width,
+      shapeBoundingBox.height
+    );
   } else if (currentTool === "circle") {
     // Create circles
     let radius = shapeBoundingBox.width;
@@ -243,7 +245,15 @@ function drawRubberbandShape(loc) {
     let radiusX = shapeBoundingBox.width / 2;
     let radiusY = shapeBoundingBox.height / 2;
     ctx.beginPath();
-    ctx.ellipse(mousedown.x, mousedown.y, radiusX, radiusY, Math.PI / 4, 0, Math.PI * 2);
+    ctx.ellipse(
+      mousedown.x,
+      mousedown.y,
+      radiusX,
+      radiusY,
+      Math.PI / 4,
+      0,
+      Math.PI * 2
+    );
     ctx.stroke();
   } else if (currentTool === "polygon") {
     // Create polygons
@@ -253,7 +263,7 @@ function drawRubberbandShape(loc) {
 }
 
 function UpdateRubberbandOnMove(loc) {
-  // Stores changing height, width, x & y position of most 
+  // Stores changing height, width, x & y position of most
   // top left point being either the click or mouse location
   UpdateRubberbandSizeData(loc);
 
@@ -291,7 +301,7 @@ function DrawBrush() {
 function ReactToMouseDown(e) {
   // Change the mouse pointer to a crosshair
   canvas.style.cursor = "crosshair";
-  // Store location 
+  // Store location
   loc = GetMousePosition(e.clientX, e.clientY);
   // Save the current canvas image
   SaveCanvasImage();
@@ -302,18 +312,18 @@ function ReactToMouseDown(e) {
   dragging = true;
 
   // Brush will store points in an array
-  if (currentTool === 'brush') {
+  if (currentTool === "brush") {
     usingBrush = true;
     AddBrushPoint(loc.x, loc.y);
   }
-};
+}
 
 function ReactToMouseMove(e) {
   canvas.style.cursor = "crosshair";
   loc = GetMousePosition(e.clientX, e.clientY);
 
   // If using brush tool and dragging store each point
-  if (currentTool === 'brush' && dragging && usingBrush) {
+  if (currentTool === "brush" && dragging && usingBrush) {
     // Throw away brush drawings that occur outside of the canvas
     if (loc.x > 0 && loc.x < canvasWidth && loc.y > 0 && loc.y < canvasHeight) {
       AddBrushPoint(loc.x, loc.y, true);
@@ -326,7 +336,7 @@ function ReactToMouseMove(e) {
       UpdateRubberbandOnMove(loc);
     }
   }
-};
+}
 
 function ReactToMouseUp(e) {
   canvas.style.cursor = "default";
@@ -339,13 +349,13 @@ function ReactToMouseUp(e) {
 
 // Saves the image in your default download directory
 function SaveImage() {
-  // Get a reference to the link element 
+  // Get a reference to the link element
   var imageFile = document.getElementById("img-file");
   // Set that you want to download the image when link is clicked
-  imageFile.setAttribute('download', 'image.png');
+  imageFile.setAttribute("download", "image.png");
   // Reference the image in canvas for download
-  imageFile.setAttribute('href', canvas.toDataURL());
-  alert('圖案已儲存，可於下方下載。')
+  imageFile.setAttribute("href", canvas.toDataURL());
+  alert("圖案已儲存，可於下方下載。");
 }
 
 function OpenImage() {
@@ -354,6 +364,16 @@ function OpenImage() {
   img.onload = function () {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(img, 0, 0);
-  }
-  img.src = 'image.png';
+  };
+  img.src = "image.png";
+}
+
+const colorPicker = document.getElementById("colorPicker");
+
+colorPicker.addEventListener("change", changeColor, false);
+
+function changeColor(event) {
+  const color = event.target.value;
+  strokeColor = color;
+  fillColor = color;
 }
