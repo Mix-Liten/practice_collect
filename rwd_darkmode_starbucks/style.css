@@ -7,6 +7,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 :root {
   --black: #333;
   --green: #017143;
@@ -30,6 +34,7 @@ section {
   justify-content: space-around;
   align-items: center;
   background-color: var(--white);
+  transition: all 0.4s;
 }
 
 header {
@@ -187,6 +192,7 @@ header ul li a {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: all 0.8s;
 }
 
 .themeSwitch::before {
@@ -198,4 +204,96 @@ header ul li a {
 
 .themeSwitch.active::before {
   content: "\f185";
+}
+
+@media (max-width: 991px) {
+  section {
+    padding: 150px 20px;
+  }
+
+  header {
+    padding: 20px;
+  }
+
+  header ul li {
+    margin: 10px 0;
+  }
+
+  header ul li a {
+    font-size: 1.5em;
+    font-weight: 300;
+  }
+
+  .content {
+    flex-direction: column-reverse;
+  }
+
+  .content .textBox h2 {
+    font-size: 1.75em;
+  }
+
+  .content .textBox,
+  .content .imgBox {
+    max-width: 100%;
+    margin-right: 0;
+  }
+
+  .content .imgBox img {
+    max-width: 250px;
+  }
+
+  .content .imgBox::before {
+    clip-path: circle(125px at center);
+  }
+
+  .sci {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .navigation {
+    /* display: none; */
+    position: fixed;
+    top: 0;
+    left: -100%;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    transition: opacity 0.8s, left 0.4s, background-color 0.4s;
+  }
+
+  .navigation.active {
+    left: 0;
+    opacity: 1;
+  }
+
+  .toggle {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-image: url(./images/menu.png);
+    background-size: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: invert(1);
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  .toggle.active {
+    background-image: url(./images/close.png);
+    background-size: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: invert(1);
+  }
+
+  .dark .toggle {
+    filter: invert(0);
+  }
 }
