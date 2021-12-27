@@ -51,7 +51,7 @@ function Stream(x, y, speed, length) {
       lightness = (1 - (i / length)) * 50;
     }
     const colour = [120, 100, lightness];
-    const symbol = Symbol(x, y, speed, changeRate, colour);
+    const symbol = SymbolGenerator(x, y, speed, changeRate, colour);
     symbols.push(symbol);
     y -= textSize();
   }
@@ -66,7 +66,7 @@ function Stream(x, y, speed, length) {
   };
 }
 
-function Symbol(x, y, speed, changeRate, colour) {
+function SymbolGenerator(x, y, speed, changeRate, colour) {
   let character;
 
   // return object with access to draw function
