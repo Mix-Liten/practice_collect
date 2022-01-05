@@ -1,2 +1,0 @@
-½Æ¼Æsheet
-https://github.com/SheetJS/js-xlsx/issues/664

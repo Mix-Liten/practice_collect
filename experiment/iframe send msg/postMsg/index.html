@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>index</title>
+</head>
+
+<body style="border:5px solid #333;">
+  <h1>this is index</h1>
+  <iframe src="./iframePage.html" id='testFrame' frameborder="0"></iframe>
+
+  <script>
+    iFrame = document.getElementById('testFrame')
+    iFrame.onload = function () {
+      // iFrame.contentWindow.postMessage('testMsgFromIndex', '*');
+      // iFrame.contentWindow.postMessage(['t','e','s','t','Arr'], '*');
+      iFrame.contentWindow.postMessage({
+        test: 'try',
+        justTry: ['1',2,{a:3},[4]],
+        num: 5,
+        objobj: {
+          inobj: 'round 2'
+        }
+      }, '*');
+    }
+
+    window.addEventListener("message", function (evt) {
+      // console.log('getMsgFromPage', evt)
+      console.log('index', evt.data)
+    });
+  </script>
+</body>
+
+</html>

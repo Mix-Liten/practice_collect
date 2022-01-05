@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>excel import test</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.min.js"></script>
+  <style>
+    * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            font-family: "微软雅黑";
+            min-height: 95%;
+            width: 100%;
+        }
+
+        .nav-bar {
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        button i.glyphicon {
+            margin-right: 4px;
+        }
+
+        table.table th {
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+  <input type="file" id="FileInput" hidden="hidden" style="display: none;" onchange="readfls(this.files)" />
+  <div id="app">
+    <div class="nav-bar">
+      <div class="btn-toolbar" role="toolbar">
+        <div class="input-group" style="width: 451px;" onclick="$('#FileInput')[0].click()">
+          <span class="input-group-btn">
+            <button class="btn btn-info" type="button">
+              <i class="glyphicon glyphicon-folder-open"></i>選擇文件</button>
+          </span>
+          <input type="text" class="form-control" placeholder="请選擇文件" readonly="readonly" v-model="fileInfo.name">
+        </div>
+        <div class="input-group" style="width: 151px;">
+          <span class="input-group-btn" style="font-size: 10px;line-height: 30px;">
+            {{'文件大小:'+fileInfo.size+'MB'}}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div id="demo" style="overflow: auto;" v-if="tableDemo.tbody.length>0">
+      <table class="table table-bordered" style="min-width: 100%;">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th v-for="i in tableDemo.thead">
+              {{i}}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(i,index) in tableDemo.tbody">
+            <th scope="row">{{index}}</th>
+            <td v-for="j in tableDemo.thead">{{i[j]}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    var ImportFile = null;
+    var guyNumberRule = /([A-Z]|[a-z])\d{9}/;
+
+    function readfls(fls) {
+      if (fls && fls.length > 0) {
+        ImportFile = fls[0];
+        // 从文件名中截取文件类型后缀
+        var fileX = ImportFile.name.split(".").reverse()[0];
+        var fileXyes = false;
+        // 判断文件格式
+        ["xlsx", "xlc", "xlm", "xls", "xlt", "xlw", "csv"].forEach(function (value, index, array) {
+          if (fileX === value) {
+            fileXyes = true;
+          }
+        });
+        if (fileXyes) {
+          app.fileInfo.name = ImportFile.name;
+          app.fileInfo.size = (ImportFile.size / (1024 * 1024)).toFixed(2);
+          file2Xce(ImportFile).then(function (t) {
+            console.log("執行完畢");
+            console.log(t);
+
+            if (t && t.length > 0) {
+              var tmpHead = [];
+              var pmodel = {};
+              for (var itm in t[0]) {
+                tmpHead.push(itm);
+                pmodel[itm] = itm;
+              }
+              app.tableDemo.thead = tmpHead;
+              app.tableDemo.tbody = t;
+              console.timeEnd("read-time");
+            }
+          });
+        } else {
+          alert("格式錯誤！請重新選擇");
+        }
+      }
+    }
+    var wb; //读取完成的数据　
+    function file2Xce(f) {
+      console.time("read-time");
+      console.log(f);
+
+
+
+      return new Promise(function (resolve, reject) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          var data = e.target.result;
+          if (app.rABS) {
+            wb = XLSX.read(btoa(fixdata(data)), { //手动转化
+              type: 'base64'
+            });
+          } else {
+            wb = XLSX.read(data, {
+              type: 'binary'
+            });
+          }
+          resolve(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]));
+        };
+        if (app.rABS) {
+          reader.readAsArrayBuffer(f);
+        } else {
+          reader.readAsBinaryString(f);
+        }
+      });
+    };
+
+    function fixdata(data) { //文件流转BinaryString
+      var o = "",
+        l = 0,
+        w = 10240;
+      for (; l < data.byteLength / w; ++l) o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w,
+        l * w + w)));
+      o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w)));
+      return o;
+    }
+
+
+    var app = new Vue({
+      el: "#app",
+      data: {
+        rABS: false, //是否将文件读取为二进制字符串
+        fileInfo: {
+          name: "",
+          size: 0
+        },
+        tableDemo: {
+          thead: [],
+          tbody: []
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
