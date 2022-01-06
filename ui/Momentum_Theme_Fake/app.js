@@ -12,7 +12,7 @@ function showTime() {
   const AMPM = hour >= 12 ? 'PM' : 'AM'
   hour = hour % 12 || 12
 
-  time.innerHTML = `${hour}<span>:</span>${timeAddZero(min)}<span>:</span>${timeAddZero(sec)} ${AMPM}`
+  time.innerHTML = `${hour}<span>:</span>${timeAddZero(min)}<span>:</span>${timeAddZero(sec)}<br />${AMPM}`
 
   setTimeout(showTime, 1000)
 }
