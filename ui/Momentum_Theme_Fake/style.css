@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,6 +13,8 @@ body {
   text-align: center;
   color: #000;
   height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #time {
@@ -24,8 +26,8 @@ h1 {
 }
 
 h2 {
-  margin-bottom: .5rem;
-  opacity: .6;
+  margin-bottom: 0.5rem;
+  opacity: 0.6;
 }
 
 @media (max-width: 700px) {
