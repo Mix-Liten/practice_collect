@@ -8,6 +8,17 @@ export const TILE_STATUSES = {
   QUESTION: 'question',
 }
 
+const mines_num_color_map = {
+  1: 'one',
+  2: 'two',
+  3: 'three',
+  4: 'four',
+  5: 'five',
+  6: 'six',
+  7: 'seven',
+  8: 'eight',
+}
+
 export const createBoard = (boardSize, numberOfMines) => {
   const board = []
   const minePositions = getMinePositions(boardSize, numberOfMines)
@@ -84,6 +95,7 @@ export const revealTile = (board, tile) => {
     adjacentTiles.forEach(revealTile.bind(null, board))
   } else {
     tile.element.textContent = mines.length
+    tile.element.classList.add(mines_num_color_map[mines.length])
   }
 }
 

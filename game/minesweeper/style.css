@@ -183,6 +183,8 @@ body {
 
 .board > [data-status='number'] {
   background-color: initial;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .board > .light[data-status='number'] {
@@ -191,6 +193,38 @@ body {
 
 .board > .dark[data-status='number'] {
   background-color: #d7b899;
+}
+
+.board > .one[data-status='number'] {
+  color: #1976d2;
+}
+
+.board > .two[data-status='number'] {
+  color: #388e3c;
+}
+
+.board > .three[data-status='number'] {
+  color: #d32f2f;
+}
+
+.board > .four[data-status='number'] {
+  color: #00006f;
+}
+
+.board > .five[data-status='number'] {
+  color: #710000;
+}
+
+.board > .six[data-status='number'] {
+  color: #07797e;
+}
+
+.board > .seven[data-status='number'] {
+  color: #000000;
+}
+
+.board > .eight[data-status='number'] {
+  color: #7a7a7a;
 }
 
 .manager {

@@ -35,9 +35,11 @@ const resultElement = document.querySelector('[data-result]')
 const levelTextElement = document.querySelector('.level span')
 const levelSelectorElement = document.querySelector('.manager select')
 const customFormElement = document.querySelector('.manager .custom_form')
+const minesInputElement = document.getElementById('mine_nums')
 const formElement = document.querySelector('.manager form')
 
 const init = () => {
+  // window.Private_SETTING = Private_SETTING
   window.GLOBAL_STATE = GLOBAL_STATE
   boardElement.addEventListener('click', clickTileHandler)
   boardElement.addEventListener('contextmenu', contextmenuTileHandler)
@@ -182,9 +184,13 @@ const initManager = () => {
   formElement.addEventListener('submit', e => {
     e.preventDefault()
     const { level, width, height, mine_nums } = e.target.elements
+    const [columnLen, rowLen, mineNum] = [parseInt(width.value), parseInt(height.value), parseInt(mine_nums.value)]
+    const maxMineNum = (columnLen - 1) * (rowLen - 1)
+    const mines = mineNum > maxMineNum ? maxMineNum : mineNum
+    minesInputElement.value = mines
     setMode(level.value, {
-      size: { columnLen: parseInt(width.value), rowLen: parseInt(height.value) },
-      mines: parseInt(mine_nums.value),
+      size: { columnLen, rowLen },
+      mines,
     })
     resetGame()
   })
