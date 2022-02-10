@@ -5,6 +5,7 @@ export const TILE_STATUSES = {
   NUMBER: 'number',
   MARKED: 'marked',
   ERROR_MARKED: 'error_marked',
+  QUESTION: 'question',
 }
 
 export const createBoard = (boardSize, numberOfMines) => {
@@ -47,7 +48,7 @@ export const createBoard = (boardSize, numberOfMines) => {
 }
 
 export const markTile = (tile, options = {}) => {
-  if (![TILE_STATUSES.HIDDEN, TILE_STATUSES.MARKED].includes(tile.status)) return
+  if (![TILE_STATUSES.HIDDEN, TILE_STATUSES.MARKED, TILE_STATUSES.QUESTION].includes(tile.status)) return
 
   if (tile.status === TILE_STATUSES.MARKED && options?.isEnd) {
     if (tile.mine) return
@@ -55,15 +56,21 @@ export const markTile = (tile, options = {}) => {
     return
   }
 
-  if (tile.status === TILE_STATUSES.MARKED) {
-    tile.status = TILE_STATUSES.HIDDEN
-  } else {
-    tile.status = TILE_STATUSES.MARKED
+  switch (tile.status) {
+    case TILE_STATUSES.HIDDEN:
+      tile.status = TILE_STATUSES.MARKED
+      break
+    case TILE_STATUSES.MARKED:
+      tile.status = TILE_STATUSES.QUESTION
+      break
+    case TILE_STATUSES.QUESTION:
+      tile.status = TILE_STATUSES.HIDDEN
+      break
   }
 }
 
 export const revealTile = (board, tile) => {
-  if (![TILE_STATUSES.HIDDEN].includes(tile.status)) return
+  if (![TILE_STATUSES.HIDDEN, TILE_STATUSES.QUESTION].includes(tile.status)) return
 
   if (tile.mine) {
     tile.status = TILE_STATUSES.MINE

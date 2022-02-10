@@ -121,7 +121,9 @@ const checkGameEnd = lastTile => {
     Private_SETTING.BOARD.forEach(row => {
       row.forEach(tile => {
         if (tile.status === TILE_STATUSES.MARKED) markTile(tile, { isEnd: true })
-        if (tile.mine && tile.status !== TILE_STATUSES.MARKED) revealTile(Private_SETTING.BOARD, tile)
+        if (tile.mine && ![TILE_STATUSES.MARKED, TILE_STATUSES.QUESTION].includes(tile.status)) {
+          revealTile(Private_SETTING.BOARD, tile)
+        }
       })
     })
   }
