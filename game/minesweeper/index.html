@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Minesweeper</title>
+  </head>
+  <body>
+    <h3 class="title">Minesweeper</h3>
+    <div class="subtext">
+      <div class="mines">🚩 <span data-mine-count></span></div>
+      <div class="result" data-result>🙂</div>
+      <div class="time">⏱️ <span data-time-count>0000</span></div>
+    </div>
+    <div class="manager">
+      <div class="level">Current Level: <span></span></div>
+      <form class="form">
+        <div class="input_group">
+          <label for="Difficulty">Difficulty: </label>
+          <select name="level" id="Difficulty"></select>
+        </div>
+        <div class="custom_form hidden">
+          <div class="input_group">
+            <label for="width">Width: </label>
+            <input type="number" name="width" id="width" min="8" max="30" value="16" />
+          </div>
+          <div class="input_group">
+            <label for="height">Height: </label>
+            <input type="number" name="height" id="height" min="8" max="24" value="16" />
+          </div>
+          <div class="input_group">
+            <label for="mine_nums">Mines: </label>
+            <input type="number" name="mine_nums" id="mine_nums" min="10" max="687" value="40" />
+          </div>
+        </div>
+        <button type="submit">Update</button>
+      </form>
+    </div>
+    <div class="board"></div>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
