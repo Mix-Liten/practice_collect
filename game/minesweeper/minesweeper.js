@@ -19,9 +19,9 @@ const mines_num_color_map = {
   8: 'eight',
 }
 
-export const createBoard = (boardSize, numberOfMines) => {
+export const createBoard = (boardSize, numberOfMines, startPosition) => {
   const board = []
-  const minePositions = getMinePositions(boardSize, numberOfMines)
+  const minePositions = getMinePositions(boardSize, numberOfMines, startPosition)
   const { columnLen, rowLen } = boardSize
   let isLightTheme = true
   const isEven = (columnLen * rowLen) % 2 === 0
@@ -110,16 +110,24 @@ export const checkWin = board =>
 
 export const checkLose = board => board.some(row => row.some(tile => tile.status === TILE_STATUSES.MINE))
 
-const getMinePositions = (boardSize, numberOfMines) => {
+const getMinePositions = (boardSize, numberOfMines, startPosition) => {
   const positions = []
   const { columnLen, rowLen } = boardSize
+  const corners = [
+    { x: 0, y: 0 },
+    { x: columnLen - 1, y: 0 },
+    { x: 0, y: rowLen - 1 },
+    { x: columnLen - 1, y: rowLen - 1 }
+  ]
   while (positions.length < numberOfMines) {
     const position = {
       x: randomNumber(columnLen),
       y: randomNumber(rowLen),
     }
+    const isStartPosition = position.x === startPosition.x && position.y === startPosition.y
+    const isCorner = corners.some(corner => positionMatch(corner, position))
 
-    if (!positions.some(positionMatch.bind(null, position))) {
+    if (!isStartPosition && !isCorner && !positions.some(positionMatch.bind(null, position))) {
       positions.push(position)
     }
   }

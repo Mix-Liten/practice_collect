@@ -44,12 +44,12 @@ const init = () => {
   boardElement.addEventListener('click', clickTileHandler)
   boardElement.addEventListener('contextmenu', contextmenuTileHandler)
   resultElement.addEventListener('click', () => resetGame())
-  startGame()
+  initGame()
   wrapperSubtext()
   initManager()
 }
 
-const startGame = () => {
+const initGame = () => {
   const mode = GLOBAL_STATE.MODE
   const BOARD_SIZE = MODE_SETTING[mode].size
   Private_SETTING.BOARD_SIZE = BOARD_SIZE
@@ -57,9 +57,15 @@ const startGame = () => {
   Private_SETTING.NUMBER_OF_MINES = NUMBER_OF_MINES
   minesLeftElement.textContent = NUMBER_OF_MINES
   buildBoard()
-  const board = createBoard(BOARD_SIZE, NUMBER_OF_MINES)
-  Private_SETTING.BOARD = board
-  board.forEach(row => {
+}
+
+const startGame = (position) => {
+  boardElement.innerHTML = ''
+  const mode = GLOBAL_STATE.MODE
+  const BOARD_SIZE = MODE_SETTING[mode].size
+  const NUMBER_OF_MINES = MODE_SETTING[mode].mines
+  Private_SETTING.BOARD = createBoard(BOARD_SIZE, NUMBER_OF_MINES, position)
+  Private_SETTING.BOARD.forEach(row => {
     row.forEach(tile => {
       boardElement.append(tile.element)
     })
@@ -72,7 +78,7 @@ const resetGame = () => {
   boardElement.removeEventListener('contextmenu', stopProp, { capture: true })
   resultElement.textContent = '🙂'
   levelTextElement.textContent = GLOBAL_STATE.MODE
-  startGame()
+  initGame()
   wrapperSubtext()
   resetTimer()
   timeElement.textContent = PRIVATE_STATE.time.toString().padStart(4, '0')
@@ -80,8 +86,11 @@ const resetGame = () => {
 
 const clickTileHandler = e => {
   if (!e.target.classList.contains('tile')) return
-  if (!PRIVATE_STATE.timer) PRIVATE_STATE.timer = setInterval(timerAction, 1000)
   const { x, y } = e.target.dataset
+  if (!PRIVATE_STATE.timer) {
+    startGame({ x: Number(x), y: Number(y) })
+    PRIVATE_STATE.timer = setInterval(timerAction, 1000)
+  }
   const tile = Private_SETTING.BOARD[y][x]
   revealTile(Private_SETTING.BOARD, tile)
   checkGameEnd(tile)
@@ -152,6 +161,18 @@ const buildBoard = () => {
   const { columnLen, rowLen } = Private_SETTING.BOARD_SIZE
   boardElement.style.setProperty('--xLen', columnLen)
   boardElement.style.setProperty('--yLen', rowLen)
+  let isLightTheme = true
+  const isEven = (columnLen * rowLen) % 2 === 0
+  for (let i = 0; i < columnLen * rowLen; i++) {
+    const element = document.createElement('div')
+    element.dataset.status = TILE_STATUSES.HIDDEN
+    element.dataset.x = i % columnLen
+    element.dataset.y = Math.floor(i / columnLen)
+    element.classList.add('tile', isLightTheme ? 'light' : 'dark')
+    isLightTheme = !isLightTheme
+    if ((i + 1) % columnLen === 0 && isEven) isLightTheme = !isLightTheme
+    boardElement.append(element)
+  }
 }
 
 const wrapperSubtext = () => {
