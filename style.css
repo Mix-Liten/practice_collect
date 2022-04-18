@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap');
 
 /* * > * {
   outline: 1px solid red;
@@ -8,7 +8,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
 
 .category {
@@ -17,24 +17,24 @@
 }
 
 .category::before {
-  content: "";
+  content: '';
   position: absolute;
   right: -5px;
   bottom: -1px;
   background-color: #020023;
-  background-image: linear-gradient(180deg, rgba(34,193,195,1) 0%, rgba(2,0,35,1) 100%);
+  background-image: linear-gradient(180deg, rgba(34, 193, 195, 1) 0%, rgba(2, 0, 35, 1) 100%);
   width: 8px;
   height: 120px;
   border-top-left-radius: 100%;
 }
 
 .category::after {
-  content: "";
+  content: '';
   position: absolute;
   right: -5px;
   bottom: -1px;
   background-color: #020024;
-  background-image: linear-gradient(270deg, rgba(2,0,36,1) 18%, rgba(97,50,94,1) 69%, rgba(0,212,255,1) 100%);
+  background-image: linear-gradient(270deg, rgba(2, 0, 36, 1) 18%, rgba(97, 50, 94, 1) 69%, rgba(0, 212, 255, 1) 100%);
   width: 432px;
   height: 8px;
   border-top-left-radius: 100%;
@@ -48,7 +48,7 @@
 }
 
 .category h2::before {
-  content: "";
+  content: '';
   position: absolute;
   left: -5px;
   bottom: -1px;
@@ -59,12 +59,12 @@
 }
 
 .category h2::after {
-  content: "";
+  content: '';
   position: absolute;
   left: -5px;
   bottom: -1px;
   background-color: #666;
-  background-image: linear-gradient(90deg, rgba(2,0,36,1) 18%, rgba(97,50,94,1) 69%, rgba(0,212,255,1) 100%);
+  background-image: linear-gradient(90deg, rgba(2, 0, 36, 1) 18%, rgba(97, 50, 94, 1) 69%, rgba(0, 212, 255, 1) 100%);
   width: 144px;
   height: 4px;
   border-top-right-radius: 100%;
@@ -72,8 +72,26 @@
 
 .project {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: 1rem;
+}
+
+@media (min-width: 800px) {
+  .project {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1240px) {
+  .project {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1500px) {
+  .project {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .project a {
