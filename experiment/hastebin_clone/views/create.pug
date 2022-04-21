@@ -1,0 +1,19 @@
+extends extends/layout
+
+block content
+  form(action="/store", method="POST") 
+  - let canSave = true
+  include includes/_buttons
+  div.wrapper
+    .line-numbers &gt;
+    textarea(name="content", autofocus) #{content}
+
+block scripts
+  script(
+    src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/5.0.0/autosize.min.js",
+    integrity="sha512-zibtOTbkMuTivXGk5b8yJFGLIB1jF90NuV7gwNcVWL3xZx/I1HdkXU2pCZhadsuaS5HMUzabvRqK4WmWeKrwUg==",
+    crossorigin="anonymous",
+    referrerpolicy="no-referrer"
+  )
+  script.
+    autosize(document.querySelector('textarea'))

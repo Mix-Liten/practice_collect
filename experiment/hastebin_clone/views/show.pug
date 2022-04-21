@@ -1,0 +1,30 @@
+extends extends/layout
+
+block styles
+  link(
+    rel="stylesheet",
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/base16/solarized-dark.min.css",
+    integrity="sha512-kBHeOXtsKtA97/1O3ebZzWRIwiWEOmdrylPrOo3D2+pGhq1m+1CroSOVErIlsqn1xmYowKfQNVDhsczIzeLpmg==",
+    crossorigin="anonymous",
+    referrerpolicy="no-referrer"
+  )
+
+block content
+  form(action="/store", method="POST")
+  include includes/_buttons
+  div.wrapper
+    .line-numbers
+      - for (let i = 1; i <= code.split('\n').length; i++)
+        div #{i}
+    pre
+      code#code-display(class=language ? "language-" + language : "") #{code}
+
+block scripts
+  script(
+    src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js",
+    integrity="sha512-yUUc0qWm2rhM7X0EFe82LNnv2moqArj5nro/w1bi05A09hRVeIZbN6jlMoyu0+4I/Bu4Ck/85JQIU82T82M28w==",
+    crossorigin="anonymous",
+    referrerpolicy="no-referrer"
+  )
+  script.
+    hljs.highlightAll()

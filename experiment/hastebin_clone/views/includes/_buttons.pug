@@ -1,0 +1,8 @@
+div.buttons-wrapper
+  a.logo(href="/") HasteBin
+  div.buttons
+    a.btn(href="/create") Create
+    if canSave
+      button.btn(type="submit") Save
+    if id != null
+      a.btn(href="/duplicate/" + id) Duplicate
