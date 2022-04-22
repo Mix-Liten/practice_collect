@@ -15,13 +15,13 @@ to create a new file to share with others.
 const create = async (req, res) => {
   const id = req.params.id
   if (!id) {
-    res.render('create')
+    res.render('create', { title: 'Hastebin | Create' })
     return
   }
 
   try {
     const document = await Document.findById(id)
-    res.render('create', { content: document.content })
+    res.render('create', { title: 'Hastebin | Create', content: document.content })
   } catch (err) {
     res.redirect('/')
   }
@@ -33,7 +33,7 @@ const store = async (req, res) => {
     const document = await Document.create({ content })
     res.redirect(`/show/${document.id}`)
   } catch (err) {
-    res.render('create', { content })
+    res.render('create', { title: 'Hastebin | Create', content })
   }
 }
 
@@ -41,7 +41,7 @@ const show = async (req, res) => {
   const id = req.params.id
   try {
     const document = await Document.findById(id)
-    res.render('show', { code: document.content, id })
+    res.render('show', { title: 'Hastebin | Show', code: document.content, id })
   } catch (err) {
     res.redirect('/')
   }

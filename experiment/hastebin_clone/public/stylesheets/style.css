@@ -22,6 +22,7 @@ pre {
   color: #7d7d7d;
   font-family: monospace;
   text-align: end;
+  margin-right: 0.5rem;
 }
 
 textarea {
