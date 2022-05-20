@@ -238,3 +238,27 @@ svg {
 .wrong svg {
   stroke: var(--error);
 }
+
+@keyframes fly-up {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.fly-up {
+  z-index: 10;
+  animation: fly-up 0.95s linear forwards;
+  transform: translateY(calc(-100% * var(--r)));
+}
+
+@keyframes fly-down {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.fly-down {
+  z-index: 10;
+  animation: fly-down 0.95s linear forwards;
+  transform: translateY(calc(100% * var(--r)));
+}

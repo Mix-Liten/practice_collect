@@ -1,5 +1,5 @@
 import { useReducer, useEffect } from 'react'
-import { randomSort, replaceAt } from '../utils'
+import { randomSort, replaceAt, swapItem } from '../utils'
 
 const INITIAL_STATE = {
   listData: [],
@@ -19,7 +19,7 @@ const reducer = (state, action) => {
     case 'CHANGE_LISTDATA':
       return {
         ...state,
-        listData: replaceAt(state.listData, action.payload.fromIndex, action.payload.toIndex),
+        listData: swapItem(state.listData, action.payload.fromIndex, action.payload.toIndex),
       }
     case 'CHANGE_STATUS':
       return {
@@ -49,7 +49,7 @@ const useGame = ({ data }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
   useEffect(() => {
     dispatch({ type: 'INIT_LISTDATA', payload: { data } })
-  }, [])
+  }, [data])
   return [state, dispatch]
 }
 

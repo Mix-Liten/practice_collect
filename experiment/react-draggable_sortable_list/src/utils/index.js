@@ -19,4 +19,9 @@ const replaceAt = (listData, fromIndex, toIndex) => {
   return [...newData.slice(0, toIndex), ...fromValue, ...newData.slice(toIndex)]
 }
 
-export { randomSort, swapItem, replaceAt }
+const inRange = (index, { start, end }) => {
+  if (start == null || end == null) return false
+  return index > start && index < end
+}
+
+export { randomSort, swapItem, replaceAt, inRange }
