@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dycalendar.min.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>glassmorphism_calendar</title>
+  </head>
+  <body>
+    <section>
+      <div class="box">
+        <div class="container">
+          <div id="dycalendar"></div>
+        </div>
+      </div>
+    </section>
+    <script src="./dycalendar.min.js"></script>
+    <script>
+      let dycalendarDate = {
+        year: new Date().getFullYear(),
+        month: new Date().getMonth(),
+        date: new Date().getDate(),
+      };
+      const dycalendarInit = () => {
+        dycalendar.draw({
+          target: "#dycalendar",
+          type: "month",
+          dayformat: "full",
+          monthformat: "full",
+          highlighttargetdate: true,
+          prevnextbutton: "show",
+          ...dycalendarDate,
+        });
+      };
+      dycalendarInit();
+
+      // 更新日期
+      const clickDateHandler = () => {
+        const dycalendarElement = document.getElementById("dycalendar");
+        const tds = dycalendarElement.querySelectorAll(
+          "table tr:not(:nth-child(1)) td:not(:empty)"
+        );
+        tds.forEach((td) => {
+          td.addEventListener("click", (events) => {
+            if (events.target.classList.contains("dycalendar-target-date"))
+              return;
+            const currentCalendarOptions = JSON.parse(
+              dycalendarElement.querySelector(".dycalendar-header").dataset
+                .option
+            );
+            dycalendarDate = {
+              ...dycalendarDate,
+              year: currentCalendarOptions.year,
+              month: currentCalendarOptions.month,
+              date: +events.target.textContent,
+            };
+            dycalendarInit();
+            setTimeout(clickDateHandler, 100);
+            setTimeout(switchMonthHandler, 100);
+          });
+        });
+      };
+      setTimeout(clickDateHandler, 100);
+      // 換頁重綁事件
+      const switchMonthHandler = () => {
+        const dycalendarElement = document.getElementById("dycalendar");
+        dycalendarElement
+          .querySelectorAll("span.dycalendar-prev-next-btn")
+          .forEach((btn) => {
+            btn.addEventListener("click", (events) => {
+              setTimeout(clickDateHandler, 100);
+              setTimeout(switchMonthHandler, 100);
+            });
+          });
+      };
+      setTimeout(switchMonthHandler, 100);
+    </script>
+  </body>
+</html>
