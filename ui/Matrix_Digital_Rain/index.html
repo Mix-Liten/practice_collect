@@ -13,18 +13,23 @@
 
       body {
         margin: 0;
+        padding: 0;
         height: 100%;
       }
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      #canvas2 {
+        filter: blur(1px);
+      }
     </style>
-    <title>Matrix Digital Rain(p5.js Ver.)</title>
+    <script src="./app.js" defer></script>
+    <title>Matrix_Digital_Rain</title>
   </head>
   <body>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"
-      integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="./app.js"></script>
+    <canvas id="canvas1"></canvas>
+    <canvas id="canvas2"></canvas>
   </body>
 </html>
