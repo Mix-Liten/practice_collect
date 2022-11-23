@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>signName tool</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+      }
+      .btns {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4rem;
+      }
+      canvas {
+        cursor: pointer;
+        border: 1px solid #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="btns">
+      <input type="file" id="file-read" accept=".pdf" />
+      <button id="download">download</button>
+    </div>
+
+    <canvas id="drawing-canvas" width="480" height="200"></canvas>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.7.570/pdf.min.js"
+      integrity="sha512-g4FwCPWM/fZB1Eie86ZwKjOP+yBIxSBM/b2gQAiSVqCgkyvZ0XxYPDEcN2qqaKKEvK6a05+IPL1raO96RrhYDQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"
+      integrity="sha512-ToRWKKOvhBSS8EtqSflysM/S7v9bB9V0X3B1+E7xo7XZBEZCPL3VX5SFIp8zxY19r7Sz0svqQVbAOx+QcLQSAQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./assets/sketchable.full.min.js"></script>
+    <script>
+      // let urlData = "./keyword_sheet.pdf";
+      let urlData;
+      let canvas = document.getElementById("drawing-canvas");
+      let context = canvas.getContext("2d");
+      let sketcher;
+      let downloadBtn = document.getElementById("download");
+      let fileReader = document.getElementById("file-read");
+
+      function renderPdfToCanvas() {
+        let loadingTask = pdfjsLib.getDocument(urlData);
+        loadingTask.promise.then((pdf) => {
+          pdf.getPage(1).then((page) => {
+            let viewport = page.getViewport({ scale: 1 });
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            let renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            let renderTask = page.render(renderContext);
+            renderTask.promise.then(() => {
+              sketcher = new Sketchable(canvas);
+            });
+          });
+        });
+      }
+
+      fileReader.addEventListener("change", (e) => {
+        urlData = window.URL.createObjectURL(e.target.files[0]);
+        renderPdfToCanvas();
+      });
+
+      download.addEventListener("click", (e) => {
+        e.preventDefault();
+        let imgData = canvas.toDataURL("image/jpeg", 1);
+        let pdf = new jsPDF();
+
+        pdf.addImage(imgData, "JPEG", 0, 0);
+        pdf.save("newPdf.pdf");
+      });
+    </script>
+  </body>
+</html>
