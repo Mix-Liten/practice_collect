@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
     <title>practice collect</title>
+    <script async>
+      if ('loading' in HTMLImageElement.prototype) {
+        const images = document.querySelectorAll('img[loading="lazy"]')
+        images.forEach(img => {
+          img.src = img.dataset.src
+        })
+      } else {
+        // Dynamically import the LazySizes library
+        const script = document.createElement('script')
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js'
+        document.body.appendChild(script)
+      }
+    </script>
   </head>
   <body>
     <section class="category">
@@ -13,27 +26,27 @@
       <div class="project">
         <a href="./game/minesweeper/index.html">
           <div class="title">Minesweeper</div>
-          <img class="preview" src="./images/game/Minesweeper.jpg" />
+          <img class="preview" loading="lazy" src="./images/game/Minesweeper.jpg" />
         </a>
         <a href="./game/canvas_Tetris/index.html">
           <div class="title">Tetris</div>
-          <img class="preview" src="./images/game/Tetris.jpg" />
+          <img class="preview" loading="lazy" src="./images/game/Tetris.jpg" />
         </a>
         <a href="./game/canvas_paint/index.html">
           <div class="title">Paint</div>
-          <img class="preview" src="./images/game/Paint.jpg" />
+          <img class="preview" loading="lazy" src="./images/game/Paint.jpg" />
         </a>
         <a href="./game/Pong/index.html">
           <div class="title">Pong</div>
-          <img class="preview" src="./images/game/Pong.jpg" />
+          <img class="preview" loading="lazy" src="./images/game/Pong.jpg" />
         </a>
         <a href="./game/Dino/index.html">
           <div class="title">Dino</div>
-          <img class="preview" src="./images/game/Dino.jpg" />
+          <img class="preview" loading="lazy" src="./images/game/Dino.jpg" />
         </a>
         <a href="./game/Wordle/index.html">
           <div class="title">Wordle</div>
-          <img class="preview" src="./images/game/Wordle.jpg" />
+          <img class="preview" loading="lazy" src="./images/game/Wordle.jpg" />
         </a>
       </div>
     </section>
@@ -42,197 +55,197 @@
       <div class="project">
         <a href="./ui/Abstract_Background_Generator/index.html">
           <div class="title">Abstract_Background_Generator</div>
-          <img class="preview" src="./images/ui/Abstract_Background_Generator.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Abstract_Background_Generator.jpg" />
         </a>
         <a href="./ui/corner_text_parallax/index.html">
           <div class="title">corner_text_parallax</div>
-          <img class="preview" src="./images/ui/corner_text_parallax.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/corner_text_parallax.jpg" />
         </a>
         <a href="./ui/css_grid_layout/index.html">
           <div class="title">css_grid_layout</div>
         </a>
         <a href="./ui/dynamic_extend_search_bar/index.html">
           <div class="title">dynamic_extend_search_bar</div>
-          <img class="preview" src="./images/ui/dynamic_extend_search_bar.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/dynamic_extend_search_bar.jpg" />
         </a>
         <a href="./ui/Flying_Rocket/index.html">
           <div class="title">Flying_Rocket</div>
-          <img class="preview" src="./images/ui/Flying_Rocket.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Flying_Rocket.jpg" />
         </a>
         <a href="./ui/Follow_Mouse_Cursor/index.html">
           <div class="title">Follow_Mouse_Cursor</div>
-          <img class="preview" src="./images/ui/Follow_Mouse_Cursor.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Follow_Mouse_Cursor.jpg" />
         </a>
         <a href="./ui/Glowing_3D_Cube_Animation/index.html">
           <div class="title">Glowing_3D_Cube_Animation</div>
-          <img class="preview" src="./images/ui/Glowing_3D_Cube_Animation.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Glowing_3D_Cube_Animation.jpg" />
         </a>
         <a href="./ui/Ink_Splash_Video_Manipulation/index.html">
           <div class="title">Ink_Splash_Video_Manipulation</div>
-          <img class="preview" src="./images/ui/Ink_Splash_Video_Manipulation.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Ink_Splash_Video_Manipulation.jpg" />
         </a>
         <a href="./ui/Matrix_Digital_Rain/index.html">
           <div class="title">Matrix_Digital_Rain</div>
-          <img class="preview" src="./images/ui/Matrix_Digital_Rain.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Matrix_Digital_Rain.jpg" />
         </a>
         <a href="./ui/Momentum_Theme_Fake/index.html">
           <div class="title">Momentum_Theme_Fake</div>
-          <img class="preview" src="./images/ui/Momentum_Theme_Fake.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Momentum_Theme_Fake.jpg" />
         </a>
         <a href="./ui/Navigation_Sidebar_Menu/index.html">
           <div class="title">Navigation_Sidebar_Menu</div>
-          <img class="preview" src="./images/ui/Navigation_Sidebar_Menu.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Navigation_Sidebar_Menu.jpg" />
         </a>
         <a href="./ui/Navigation_Sidebar_Menu_v2/index.html">
           <div class="title">Navigation_Sidebar_Menu_v2</div>
-          <img class="preview" src="./images/ui/Navigation_Sidebar_Menu_v2.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Navigation_Sidebar_Menu_v2.jpg" />
         </a>
         <a href="./ui/Parallax_Scrolling-offset_multiple_image/index.html">
           <div class="title">Parallax_Scrolling-offset_multiple_image</div>
-          <img class="preview" src="./images/ui/Parallax_Scrolling-offset_multiple_image.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Parallax_Scrolling-offset_multiple_image.jpg" />
         </a>
         <a href="./ui/ResponsiveFullScreenImageSlider/index.html">
           <div class="title">ResponsiveFullScreenImageSlider</div>
-          <img class="preview" src="./images/ui/ResponsiveFullScreenImageSlider.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/ResponsiveFullScreenImageSlider.jpg" />
         </a>
         <a href="./ui/Rotate_3D_Cube_Animation/index.html">
           <div class="title">Rotate_3D_Cube_Animation</div>
-          <img class="preview" src="./images/ui/Rotate_3D_Cube_Animation.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Rotate_3D_Cube_Animation.jpg" />
         </a>
         <a href="./ui/rwd_darkmode_starbucks/index.html">
           <div class="title">rwd_darkmode_starbucks</div>
-          <img class="preview" src="./images/ui/rwd_darkmode_starbucks.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/rwd_darkmode_starbucks.jpg" />
         </a>
         <a href="./ui/Sign_Form/index.html">
           <div class="title">Sign_Form</div>
-          <img class="preview" src="./images/ui/Sign_Form.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Sign_Form.jpg" />
         </a>
         <a href="./ui/glassmorphism_calendar/index.html">
           <div class="title">glassmorphism_calendar</div>
-          <img class="preview" src="./images/ui/glassmorphism_calendar.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/glassmorphism_calendar.jpg" />
         </a>
         <a href="./ui/glassmorphism_contact_us_form/index.html">
           <div class="title">glassmorphism_contact_us_form</div>
-          <img class="preview" src="./images/ui/glassmorphism_contact_us_form.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/glassmorphism_contact_us_form.jpg" />
         </a>
         <a href="./ui/light_dark_clock/index.html">
           <div class="title">light_dark_clock</div>
-          <img class="preview" src="./images/ui/light_dark_clock.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/light_dark_clock.jpg" />
         </a>
         <a href="./ui/Water_Drop_With_Logo/index.html">
           <div class="title">Water_Drop_With_Logo</div>
-          <img class="preview" src="./images/ui/Water_Drop_With_Logo.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Water_Drop_With_Logo.jpg" />
         </a>
         <a href="./ui/Background_Animation.html">
           <div class="title">Background_Animation</div>
         </a>
         <a href="./ui/border_trick_1.html">
           <div class="title">border_trick</div>
-          <img class="preview" src="./images/ui/border_trick.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/border_trick.jpg" />
         </a>
         <a href="./ui/Loading_Glowing_Ring.html">
           <div class="title">Loading_Glowing_Ring</div>
-          <img class="preview" src="./images/ui/Loading_Glowing_Ring.gif" />
+          <img class="preview" loading="lazy" src="./images/ui/Loading_Glowing_Ring.gif" />
         </a>
         <a href="./ui/loading_wavy_text_animation.html">
           <div class="title">loading_wavy_text_animation</div>
-          <img class="preview" src="./images/ui/loading_wavy_text_animation.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/loading_wavy_text_animation.jpg" />
         </a>
         <a href="./ui/Particles.html">
           <div class="title">Particles</div>
-          <img class="preview" src="./images/ui/Particles.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Particles.jpg" />
         </a>
         <a href="./ui/Rain_Drops.html">
           <div class="title">Rain_Drops</div>
-          <img class="preview" src="./images/ui/Rain_Drops.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Rain_Drops.jpg" />
         </a>
         <a href="./ui/Rolling_ Square_Animation/index.html">
           <div class="title">Rolling_ Square_Animation</div>
-          <img class="preview" src="./images/ui/Rolling_ Square_Animation.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Rolling_ Square_Animation.jpg" />
         </a>
         <a href="./ui/Picture_Background_Animation/index.html">
           <div class="title">Picture_Background_Animation</div>
-          <img class="preview" src="./images/ui/Picture_Background_Animation.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Picture_Background_Animation.jpg" />
         </a>
         <a href="./ui/Menu_Microinteraction/index.html">
           <div class="title">Menu_Microinteraction</div>
-          <img class="preview" src="./images/ui/Menu_Microinteraction.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Menu_Microinteraction.jpg" />
         </a>
         <a href="./ui/Abstract_Arrow_Background/index.html">
           <div class="title">Abstract_Arrow_Background</div>
-          <img class="preview" src="./images/ui/Abstract_Arrow_Background.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Abstract_Arrow_Background.jpg" />
         </a>
         <a href="./ui/Abstract_Arrow_Animation_Background/index.html">
           <div class="title">Abstract_Arrow_Animation_Background</div>
-          <img class="preview" src="./images/ui/Abstract_Arrow_Animation_Background.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Abstract_Arrow_Animation_Background.jpg" />
         </a>
         <a href="./ui/Animated_Video_Popup/index.html">
           <div class="title">Animated_Video_Popup</div>
-          <img class="preview" src="./images/ui/Animated_Video_Popup.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Animated_Video_Popup.jpg" />
         </a>
         <a href="./ui/Dropdown_User_Menu/index.html">
           <div class="title">Dropdown_User_Menu</div>
-          <img class="preview" src="./images/ui/Dropdown_User_Menu.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Dropdown_User_Menu.jpg" />
         </a>
         <a href="./ui/Digital_Clock/index.html">
           <div class="title">Digital_Clock</div>
-          <img class="preview" src="./images/ui/Digital_Clock.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Digital_Clock.jpg" />
         </a>
         <a href="./ui/Mobile_Navigation_Menu/index.html">
           <div class="title">Mobile_Navigation_Menu</div>
-          <img class="preview" src="./images/ui/Mobile_Navigation_Menu.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Mobile_Navigation_Menu.jpg" />
         </a>
         <a href="./ui/Carousel_List/index.html">
           <div class="title">Carousel_List</div>
-          <img class="preview" src="./images/ui/Carousel_List.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Carousel_List.jpg" />
         </a>
         <a href="./ui/Draft_Countdown_Timer/index.html">
           <div class="title">Draft_Countdown_Timer</div>
-          <img class="preview" src="./images/ui/Draft_Countdown_Timer.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Draft_Countdown_Timer.jpg" />
         </a>
         <a href="./ui/Rainy_Cloud_Animation/index.html">
           <div class="title">Rainy_Cloud_Animation</div>
-          <img class="preview" src="./images/ui/Rainy_Cloud_Animation.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Rainy_Cloud_Animation.jpg" />
         </a>
         <a href="./ui/3D_Isometric_menu/index.html">
           <div class="title">3D_Isometric_menu</div>
-          <img class="preview" src="./images/ui/3D_Isometric_menu.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/3D_Isometric_menu.jpg" />
         </a>
         <a href="./ui/rwd_ghost_404_page/index.html">
           <div class="title">rwd_ghost_404_page</div>
-          <img class="preview" src="./images/ui/rwd_ghost_404_page.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/rwd_ghost_404_page.jpg" />
         </a>
         <a href="./ui/3D_Text_Rotation/index.html">
           <div class="title">3D_Text_Rotation</div>
-          <img class="preview" src="./images/ui/3D_Text_Rotation.gif" />
+          <img class="preview" loading="lazy" src="./images/ui/3D_Text_Rotation.gif" />
         </a>
         <a href="./ui/Glowing_Gradient_Loading/index.html">
           <div class="title">Glowing_Gradient_Loading</div>
-          <img class="preview" src="./images/ui/Glowing_Gradient_Loading.gif" />
+          <img class="preview" loading="lazy" src="./images/ui/Glowing_Gradient_Loading.gif" />
         </a>
         <a href="./ui/Input_Field_Animation/index.html">
           <div class="title">Input_Field_Animation</div>
-          <img class="preview" src="./images/ui/Input_Field_Animation.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Input_Field_Animation.jpg" />
         </a>
         <a href="./ui/Animated_Swipe_Button/index.html">
           <div class="title">Animated_Swipe_Button</div>
-          <img class="preview" src="./images/ui/Animated_Swipe_Button.gif" />
+          <img class="preview" loading="lazy" src="./images/ui/Animated_Swipe_Button.gif" />
         </a>
         <a href="./ui/Animated_Action_Menu/index.html">
           <div class="title">Animated_Action_Menu</div>
-          <img class="preview" src="./images/ui/Animated_Action_Menu.gif" />
+          <img class="preview" loading="lazy" src="./images/ui/Animated_Action_Menu.gif" />
         </a>
         <a href="./ui/Glowing_Gradient_Border/index.html">
           <div class="title">Glowing_Gradient_Border</div>
-          <img class="preview" src="./images/ui/Glowing_Gradient_Border.gif" />
+          <img class="preview" loading="lazy" src="./images/ui/Glowing_Gradient_Border.gif" />
         </a>
         <a href="./ui/Animated_Square_Landing/index.html">
           <div class="title">Animated_Square_Landing</div>
-          <img class="preview" src="./images/ui/Animated_Square_Landing.jpg" />
+          <img class="preview" loading="lazy" src="./images/ui/Animated_Square_Landing.jpg" />
         </a>
         <a href="./ui/Clip_Path_And_Stroke/index.html">
           <div class="title">Clip_Path_And_Stroke</div>
-          <img class="preview" src="./images/ui/Clip_Path_And_Stroke.png" />
+          <img class="preview" loading="lazy" src="./images/ui/Clip_Path_And_Stroke.png" />
         </a>
       </div>
     </section>
