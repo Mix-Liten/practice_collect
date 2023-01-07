@@ -14,26 +14,26 @@
 
     <script src="./anime.min.js"></script>
     <script>
-      const blockNum = 10;
-      const maxX = window.innerWidth / 2;
-      const maxY = window.innerHeight / 2;
-      const container = document.querySelector(".container");
+      const blockNum = 10
+      const maxX = window.innerWidth / 2
+      const maxY = window.innerHeight / 2
+      const container = document.querySelector('.container')
       for (let i = 0; i <= blockNum; i++) {
-        const blocks = document.createElement("div");
-        blocks.classList.add("block");
-        container.appendChild(blocks);
+        const blocks = document.createElement('div')
+        blocks.classList.add('block')
+        container.appendChild(blocks)
       }
 
       const generate = () => {
         anime({
-          targets: ".block",
+          targets: '.block',
           translateX: () => anime.random(-maxX, maxX),
           translateY: () => anime.random(-maxY, maxY),
           scale: () => anime.random(1, 5),
-        });
-      };
+        })
+      }
 
-      generate();
+      generate()
     </script>
   </body>
 </html>

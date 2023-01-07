@@ -70,29 +70,23 @@
       <div class="shadow"></div>
     </div>
 
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <script>
-      const lists = document.querySelectorAll(".list");
-      const shadow = document.querySelector(".shadow");
+      const lists = document.querySelectorAll('.list')
+      const shadow = document.querySelector('.shadow')
       function activeLink() {
-        const index = this.dataset.index;
-        shadow.style.top = `${40 + parseFloat(index) * 60}px`;
-        lists.forEach((list) => {
-          list.classList.remove("active");
-          this.classList.add("active");
-        });
+        const index = this.dataset.index
+        shadow.style.top = `${40 + parseFloat(index) * 60}px`
+        lists.forEach(list => {
+          list.classList.remove('active')
+          this.classList.add('active')
+        })
       }
       lists.forEach((list, index) => {
-        list.addEventListener("click", activeLink);
-      });
+        list.addEventListener('click', activeLink)
+      })
     </script>
   </body>
 </html>

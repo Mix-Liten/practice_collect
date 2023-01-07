@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background: #f6f5f7;
   display: flex;
   flex-direction: column;
@@ -199,7 +199,6 @@ button.ghost {
 }
 
 @keyframes show {
-
   0%,
   49.99% {
     opacity: 0;

@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 section {
@@ -18,7 +18,7 @@ section {
 }
 
 section::before {
-  content: "";
+  content: '';
   position: absolute;
   width: 400px;
   height: 400px;
@@ -28,7 +28,7 @@ section::before {
 }
 
 section::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 350px;
   height: 350px;
@@ -108,15 +108,11 @@ section::after {
   user-select: none;
 }
 
-.dycalendar-month-container
-  .dycalendar-header
-  .dycalendar-prev-next-btn.prev-btn {
+.dycalendar-month-container .dycalendar-header .dycalendar-prev-next-btn.prev-btn {
   left: 4px;
 }
 
-.dycalendar-month-container
-  .dycalendar-header
-  .dycalendar-prev-next-btn.next-btn {
+.dycalendar-month-container .dycalendar-header .dycalendar-prev-next-btn.next-btn {
   right: 4px;
 }
 

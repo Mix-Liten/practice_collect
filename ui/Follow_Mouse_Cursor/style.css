@@ -11,7 +11,7 @@ body {
   align-items: center;
   min-height: 100vh;
   overflow: hidden;
-  cursor: url("./images/apple.png"), pointer;
+  cursor: url('./images/apple.png'), pointer;
 }
 
 .arrow {

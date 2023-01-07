@@ -1,4 +1,4 @@
-const clickAction = (e) => {
+const clickAction = e => {
   let arrow
   if (e.target.matches('.arrow')) {
     arrow = e.target
@@ -10,11 +10,10 @@ const clickAction = (e) => {
   }
 }
 
-const arrowAction = (arrowEle) => {
+const arrowAction = arrowEle => {
   const progressBarEle = arrowEle.closest('.row').querySelector('.progress-bar')
   const slider = arrowEle.closest('.container').querySelector('.slider')
-  const sliderIndex = parseInt(getComputedStyle(slider).getPropertyValue('--slider-index')
-  ) || 0
+  const sliderIndex = parseInt(getComputedStyle(slider).getPropertyValue('--slider-index')) || 0
   const progressBarItemCount = progressBarEle.children.length
   if (arrowEle.classList.contains('arrow-prev')) {
     if (sliderIndex === 0) {
@@ -42,14 +41,12 @@ const arrowAction = (arrowEle) => {
 
 document.addEventListener('click', clickAction)
 
-const calculateProgressBar = (progressBarEle) => {
+const calculateProgressBar = progressBarEle => {
   progressBarEle.innerHTML = ''
   const slider = progressBarEle.closest('.row').querySelector('.slider')
   const itemCount = slider.children.length
-  const itemsPerScreen = parseInt(getComputedStyle(slider).getPropertyValue('--items-per-screen')
-  ) || 4
-  let sliderIndex = parseInt(getComputedStyle(slider).getPropertyValue('--slider-index')
-  ) || 0
+  const itemsPerScreen = parseInt(getComputedStyle(slider).getPropertyValue('--items-per-screen')) || 4
+  let sliderIndex = parseInt(getComputedStyle(slider).getPropertyValue('--slider-index')) || 0
   const progressBarItemCount = Math.ceil(itemCount / itemsPerScreen)
 
   if (sliderIndex >= progressBarItemCount) {

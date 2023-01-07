@@ -36,7 +36,7 @@
 
 .scene .rocket::before,
 .scene .rocket::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -200px;
   left: 50%;

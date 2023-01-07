@@ -4,7 +4,7 @@ const listItems = document.querySelectorAll('.item')
 //   navigation.classList.toggle('active')
 // }
 
-const activeLink = (e) => {
+const activeLink = e => {
   const target = e.target
   if (target.classList.contains('active')) return
   listItems.forEach(item => {

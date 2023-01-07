@@ -19,16 +19,11 @@
       </div>
     </section>
     <script>
-      const parallaxText = (e) =>
+      const parallaxText = e =>
         document
-          .querySelectorAll(".layer")
-          .forEach(
-            (layer) =>
-              (layer.style.transform = `translateX(${
-                (window.innerWidth - e.pageX * 2) / 2
-              }px)`)
-          );
-      document.addEventListener("mousemove", parallaxText);
+          .querySelectorAll('.layer')
+          .forEach(layer => (layer.style.transform = `translateX(${(window.innerWidth - e.pageX * 2) / 2}px)`))
+      document.addEventListener('mousemove', parallaxText)
     </script>
   </body>
 </html>

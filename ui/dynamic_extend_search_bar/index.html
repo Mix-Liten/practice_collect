@@ -12,17 +12,14 @@
       <div class="icon"></div>
       <div class="input-wrapper">
         <input id="customInput" type="text" placeholder="Search" />
-        <span
-          class="clear"
-          onclick="document.getElementById('customInput').value = ''"
-        ></span>
+        <span class="clear" onclick="document.getElementById('customInput').value = ''"></span>
       </div>
     </div>
 
     <script>
-      const search = document.querySelector(".search");
-      const icon = document.querySelector(".icon");
-      icon.onclick = () => search.classList.toggle("active");
+      const search = document.querySelector('.search')
+      const icon = document.querySelector('.icon')
+      icon.onclick = () => search.classList.toggle('active')
     </script>
   </body>
 </html>
