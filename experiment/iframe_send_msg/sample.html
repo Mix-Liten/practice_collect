@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
- <title>Test Affops</title>
-</head>
-<body>
- <div id="affops"></div>
-</body>
+  <head>
+    <title>Test Affops</title>
+  </head>
+  <body>
+    <div id="affops"></div>
+  </body>
 
- <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="https://in.cctech-support.com/~seanliao/affopsapi.js"></script>
- 
- <!-- <script type="text/javascript" src="https://in.cctech-support.com/~matthewhui2/affops/affopsapi.js"></script> -->
- <script type="text/javascript">
-  function initAffops() {
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript" src="https://in.cctech-support.com/~seanliao/affopsapi.js"></script>
 
-   var ops =Affops($("#affops"),{ 
-    name:"Sean Liao",
-    saying:"Hello world!"
-   });
+  <!-- <script type="text/javascript" src="https://in.cctech-support.com/~matthewhui2/affops/affopsapi.js"></script> -->
+  <script type="text/javascript">
+    function initAffops() {
+      var ops = Affops($('#affops'), {
+        name: 'Sean Liao',
+        saying: 'Hello world!',
+      })
 
-   return ops;
-  }
+      return ops
+    }
 
-  var ops = initAffops();
- </script>
+    var ops = initAffops()
+  </script>
 </html>

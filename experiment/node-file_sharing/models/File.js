@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose')
 
 const File = new mongoose.Schema({
   path: {
@@ -17,4 +17,4 @@ const File = new mongoose.Schema({
   },
 })
 
-module.exports = mongoose.model("File", File)
+module.exports = mongoose.model('File', File)

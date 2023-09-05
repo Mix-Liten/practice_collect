@@ -1,4 +1,4 @@
-const router =  require('express').Router()
+const router = require('express').Router()
 const documentController = require('../controllers/documentController')
 
 router.get('/', documentController.index)

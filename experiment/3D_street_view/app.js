@@ -15,13 +15,11 @@ function main() {
 
   const scene = new THREE.Scene()
   const loader = new THREE.TextureLoader()
-  const texture = loader.load(
-    './images/mountain.jpg', () => {
-      const rt = new THREE.WebGLCubeRenderTarget(texture.image.height)
-      rt.fromEquirectangularTexture(renderer, texture)
-      scene.background = rt.texture
-    }
-  )
+  const texture = loader.load('./images/mountain.jpg', () => {
+    const rt = new THREE.WebGLCubeRenderTarget(texture.image.height)
+    rt.fromEquirectangularTexture(renderer, texture)
+    scene.background = rt.texture
+  })
 
   function render() {
     camera.aspect = canvas.clientWidth / canvas.clientHeight

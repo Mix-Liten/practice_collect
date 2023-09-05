@@ -1,41 +1,41 @@
-import { Link, redirect, useLoaderData } from "remix";
-import { db } from "~/utils/db.server";
-import { getUser } from "~/utils/session.server";
+import { Link, redirect, useLoaderData } from 'remix'
+import { db } from '~/utils/db.server'
+import { getUser } from '~/utils/session.server'
 
 export const loader = async ({ request, params }) => {
-  const user = await getUser(request) || {};
+  const user = (await getUser(request)) || {}
 
   const post = await db.post.findUnique({
     where: { id: params.postId },
-  });
+  })
 
-  if (!post) throw new Error("Post not found");
+  if (!post) throw new Error('Post not found')
 
-  const data = { post, user };
-  return data;
-};
+  const data = { post, user }
+  return data
+}
 
 export const action = async ({ request, params }) => {
-  const form = await request.formData();
-  if (form.get("_method") === "delete") {
-    const user = await getUser(request);
+  const form = await request.formData()
+  if (form.get('_method') === 'delete') {
+    const user = await getUser(request)
 
     const post = await db.post.findUnique({
       where: { id: params.postId },
-    });
+    })
 
-    if (!post) throw new Error("Post not found");
+    if (!post) throw new Error('Post not found')
 
     if (user && post.userId === user.id) {
-      await db.post.delete({ where: { id: params.postId } });
+      await db.post.delete({ where: { id: params.postId } })
     }
 
-    return redirect("/posts");
+    return redirect('/posts')
   }
-};
+}
 
 function Post() {
-  const { post, user = {} } = useLoaderData();
+  const { post, user = {} } = useLoaderData()
 
   return (
     <div>
@@ -57,7 +57,7 @@ function Post() {
         )}
       </div>
     </div>
-  );
+  )
 }
 
-export default Post;
+export default Post

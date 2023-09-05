@@ -10,6 +10,7 @@ const offsetFromDate = new Date(2022, 4, 1)
 const msOffset = Date.now() - offsetFromDate
 const dayOffset = msOffset / 1e3 / 6e1 / 6e1 / 24
 const targetWord = targetWords[Math.floor(dayOffset)]
+window.answer = targetWord
 
 const alertContainer = document.querySelector('[data-alert-container]')
 const guessGrid = document.querySelector('[data-guess-grid]')
@@ -104,7 +105,7 @@ function shakeTiles(tiles) {
       () => {
         tile.classList.remove('shake')
       },
-      { once: true }
+      { once: true },
     )
   })
 }
@@ -145,11 +146,11 @@ function flipTiles(tile, index, array, guess) {
             startInteraction()
             checkWinLose(guess, array)
           },
-          { once: true }
+          { once: true },
         )
       }
     },
-    { once: true }
+    { once: true },
   )
 }
 
@@ -162,7 +163,7 @@ function danceTiles(tiles) {
         () => {
           tile.classList.remove('dance')
         },
-        { once: true }
+        { once: true },
       )
     }, (index * DANCE_ANIMATION_DURATION) / 5)
   })

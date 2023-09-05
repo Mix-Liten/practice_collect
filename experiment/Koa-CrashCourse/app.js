@@ -21,7 +21,7 @@ render(app, {
   layout: 'layout',
   viewExt: 'html',
   cache: false,
-  debug: false
+  debug: false,
 })
 
 // Routes
@@ -29,8 +29,8 @@ router.get('/', index)
 router.get('/add', showAdd)
 router.post('/add', add)
 
-router.get('/test1', ctx => ctx.body = `Hello ${ctx.userName}`)
-router.get('/test2/:name', ctx => ctx.body = `Hello ${ctx.params.name}`)
+router.get('/test1', ctx => (ctx.body = `Hello ${ctx.userName}`))
+router.get('/test2/:name', ctx => (ctx.body = `Hello ${ctx.params.name}`))
 
 // Replace with DB Data
 const things = ['My Family', 'Programming', 'Music']
@@ -39,7 +39,7 @@ const things = ['My Family', 'Programming', 'Music']
 async function index(ctx) {
   await ctx.render('index', {
     title: 'Things I Love:',
-    things
+    things,
   })
 }
 

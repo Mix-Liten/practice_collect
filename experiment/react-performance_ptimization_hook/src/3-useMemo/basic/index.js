@@ -7,10 +7,10 @@ const Basic = () => {
   const [localState, setLocalState] = useState(0)
   const [childComponentState, setChildComponentState] = useState(0)
 
-  const memoizedCallback = useCallback((state) => incrementChildState(state), [])
+  const memoizedCallback = useCallback(state => incrementChildState(state), [])
 
   const increment = () => setLocalState(localState + 1)
-  const incrementChildState = (number) => setChildComponentState(number)
+  const incrementChildState = number => setChildComponentState(number)
   const getLargestNumber = () => {
     console.log('from getLargestFunction')
     return Math.max(...arr)
@@ -18,10 +18,7 @@ const Basic = () => {
 
   return (
     <div>
-      <ChildComponent
-        number={childComponentState}
-        setNumber={memoizedCallback}
-      />
+      <ChildComponent number={childComponentState} setNumber={memoizedCallback} />
       <h1>Parent component: {localState}</h1>
       <button onClick={increment}>Up</button>
       <h2>{getLargestNumber()}</h2>

@@ -1,6 +1,6 @@
-import { Link, useLoaderData } from "remix";
-import { db } from "~/utils/db.server";
-import { getUser } from "~/utils/session.server";
+import { Link, useLoaderData } from 'remix'
+import { db } from '~/utils/db.server'
+import { getUser } from '~/utils/session.server'
 
 export const loader = async ({ request }) => {
   const data = {
@@ -8,16 +8,16 @@ export const loader = async ({ request }) => {
     posts: await db.post.findMany({
       take: 20,
       select: { id: true, title: true, createdAt: true },
-      orderBy: { createdAt: "desc" },
+      orderBy: { createdAt: 'desc' },
     }),
-  };
+  }
 
-  return data;
-};
+  return data
+}
 
 function PostItems() {
-  const { user, posts } = useLoaderData();
-  
+  const { user, posts } = useLoaderData()
+
   return (
     <>
       <div className="page-header">
@@ -29,7 +29,7 @@ function PostItems() {
         )}
       </div>
       <ul className="posts-list">
-        {posts.map((post) => (
+        {posts.map(post => (
           <li key={post.id}>
             <Link to={post.id}>
               <h3>{post.title}</h3>
@@ -39,7 +39,7 @@ function PostItems() {
         ))}
       </ul>
     </>
-  );
+  )
 }
 
-export default PostItems;
+export default PostItems

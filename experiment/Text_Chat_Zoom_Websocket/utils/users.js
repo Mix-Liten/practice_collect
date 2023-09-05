@@ -8,12 +8,12 @@ const userJoin = (id, username, room) => {
 }
 
 // Get current user
-const getCurrentUser = (id) => {
+const getCurrentUser = id => {
   return users.find(user => user.id === id)
 }
 
 // User leaves chat
-const userLeave = (id) => {
+const userLeave = id => {
   const index = users.findIndex(user => user.id === id)
   if (index !== -1) {
     return users.splice(index, 1)[0]
@@ -21,13 +21,8 @@ const userLeave = (id) => {
 }
 
 // Get room users
-const getRoomUsers = (room) => {
+const getRoomUsers = room => {
   return users.filter(user => user.room === room)
 }
 
-export {
-  userJoin,
-  getCurrentUser,
-  userLeave,
-  getRoomUsers
-}
+export { userJoin, getCurrentUser, userLeave, getRoomUsers }

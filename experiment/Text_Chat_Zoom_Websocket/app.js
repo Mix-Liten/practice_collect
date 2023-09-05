@@ -29,17 +29,12 @@ io.on('connection', socket => {
     socket.emit('message', formatMessage(botName, 'Welcome to ChatRoom!'))
 
     // Broadcast when a user connects
-    socket.broadcast
-      .to(user.room)
-      .emit(
-        'message',
-        formatMessage(botName, `${user.username} has joined the chat`)
-      )
+    socket.broadcast.to(user.room).emit('message', formatMessage(botName, `${user.username} has joined the chat`))
 
     // Send users and room info
     io.to(user.room).emit('roomUsers', {
       room: user.room,
-      users: getRoomUsers(user.room)
+      users: getRoomUsers(user.room),
     })
   })
 
@@ -55,15 +50,12 @@ io.on('connection', socket => {
     const user = userLeave(socket.id)
 
     if (user) {
-      io.to(user.room).emit(
-        'message',
-        formatMessage(botName, `${user.username} has left the chat`)
-      )
+      io.to(user.room).emit('message', formatMessage(botName, `${user.username} has left the chat`))
 
       // Send users and room info
       io.to(user.room).emit('roomUsers', {
         room: user.room,
-        users: getRoomUsers(user.room)
+        users: getRoomUsers(user.room),
       })
     }
   })

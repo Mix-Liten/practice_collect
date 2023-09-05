@@ -44,7 +44,7 @@
           td.addEventListener('click', events => {
             if (events.target.classList.contains('dycalendar-target-date')) return
             const currentCalendarOptions = JSON.parse(
-              dycalendarElement.querySelector('.dycalendar-header').dataset.option
+              dycalendarElement.querySelector('.dycalendar-header').dataset.option,
             )
             dycalendarDate = {
               ...dycalendarDate,

@@ -17,5 +17,4 @@ const Pro = () => {
   )
 }
 
-
 export default Pro

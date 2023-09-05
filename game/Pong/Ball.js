@@ -8,19 +8,19 @@ export default class Ball {
   }
 
   get x() {
-    return parseFloat(getComputedStyle(this.ballElem).getPropertyValue("--x"))
+    return parseFloat(getComputedStyle(this.ballElem).getPropertyValue('--x'))
   }
 
   set x(value) {
-    this.ballElem.style.setProperty("--x", value)
+    this.ballElem.style.setProperty('--x', value)
   }
 
   get y() {
-    return parseFloat(getComputedStyle(this.ballElem).getPropertyValue("--y"))
+    return parseFloat(getComputedStyle(this.ballElem).getPropertyValue('--y'))
   }
 
   set y(value) {
-    this.ballElem.style.setProperty("--y", value)
+    this.ballElem.style.setProperty('--y', value)
   }
 
   rect() {
@@ -61,9 +61,6 @@ function randomNumberBetween(min, max) {
 
 function isCollision(rect1, rect2) {
   return (
-    rect1.left <= rect2.right &&
-    rect1.right >= rect2.left &&
-    rect1.top <= rect2.bottom &&
-    rect1.bottom >= rect2.top
+    rect1.left <= rect2.right && rect1.right >= rect2.left && rect1.top <= rect2.bottom && rect1.bottom >= rect2.top
   )
 }

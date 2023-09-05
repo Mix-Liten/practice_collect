@@ -50,47 +50,47 @@
     <script src="./assets/sketchable.full.min.js"></script>
     <script>
       // let urlData = "./keyword_sheet.pdf";
-      let urlData;
-      let canvas = document.getElementById("drawing-canvas");
-      let context = canvas.getContext("2d");
-      let sketcher;
-      let downloadBtn = document.getElementById("download");
-      let fileReader = document.getElementById("file-read");
+      let urlData
+      let canvas = document.getElementById('drawing-canvas')
+      let context = canvas.getContext('2d')
+      let sketcher
+      let downloadBtn = document.getElementById('download')
+      let fileReader = document.getElementById('file-read')
 
       function renderPdfToCanvas() {
-        let loadingTask = pdfjsLib.getDocument(urlData);
-        loadingTask.promise.then((pdf) => {
-          pdf.getPage(1).then((page) => {
-            let viewport = page.getViewport({ scale: 1 });
+        let loadingTask = pdfjsLib.getDocument(urlData)
+        loadingTask.promise.then(pdf => {
+          pdf.getPage(1).then(page => {
+            let viewport = page.getViewport({ scale: 1 })
 
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
+            canvas.height = viewport.height
+            canvas.width = viewport.width
 
             let renderContext = {
               canvasContext: context,
               viewport: viewport,
-            };
-            let renderTask = page.render(renderContext);
+            }
+            let renderTask = page.render(renderContext)
             renderTask.promise.then(() => {
-              sketcher = new Sketchable(canvas);
-            });
-          });
-        });
+              sketcher = new Sketchable(canvas)
+            })
+          })
+        })
       }
 
-      fileReader.addEventListener("change", (e) => {
-        urlData = window.URL.createObjectURL(e.target.files[0]);
-        renderPdfToCanvas();
-      });
+      fileReader.addEventListener('change', e => {
+        urlData = window.URL.createObjectURL(e.target.files[0])
+        renderPdfToCanvas()
+      })
 
-      download.addEventListener("click", (e) => {
-        e.preventDefault();
-        let imgData = canvas.toDataURL("image/jpeg", 1);
-        let pdf = new jsPDF();
+      download.addEventListener('click', e => {
+        e.preventDefault()
+        let imgData = canvas.toDataURL('image/jpeg', 1)
+        let pdf = new jsPDF()
 
-        pdf.addImage(imgData, "JPEG", 0, 0);
-        pdf.save("newPdf.pdf");
-      });
+        pdf.addImage(imgData, 'JPEG', 0, 0)
+        pdf.save('newPdf.pdf')
+      })
     </script>
   </body>
 </html>

@@ -1,18 +1,18 @@
-import { updateGround, setupGround } from "./ground.js"
-import { updateDino, setupDino, getDinoRect, setDinoLose } from "./dino.js"
-import { updateCactus, setupCactus, getCactusRects } from "./cactus.js"
+import { updateGround, setupGround } from './ground.js'
+import { updateDino, setupDino, getDinoRect, setDinoLose } from './dino.js'
+import { updateCactus, setupCactus, getCactusRects } from './cactus.js'
 
 const CONTAINER_WIDTH = 100
 const CONTAINER_HEIGHT = 30
 const SPEED_SCALE_INCREASE = 0.00001
 
-const containerElem = document.querySelector("[data-container]")
-const scoreElem = document.querySelector("[data-score]")
-const startScreenElem = document.querySelector("[data-start-screen]")
+const containerElem = document.querySelector('[data-container]')
+const scoreElem = document.querySelector('[data-score]')
+const startScreenElem = document.querySelector('[data-start-screen]')
 
 setPixelToContainerScale()
-window.addEventListener("resize", setPixelToContainerScale)
-document.addEventListener("keydown", handleStart, { once: true })
+window.addEventListener('resize', setPixelToContainerScale)
+document.addEventListener('keydown', handleStart, { once: true })
 
 let lastTime
 let speedScale
@@ -43,12 +43,7 @@ function checkLose() {
 }
 
 function isCollision(rect1, rect2) {
-  return (
-    rect1.left < rect2.right &&
-    rect1.top < rect2.bottom &&
-    rect1.right > rect2.left &&
-    rect1.bottom > rect2.top
-  )
+  return rect1.left < rect2.right && rect1.top < rect2.bottom && rect1.right > rect2.left && rect1.bottom > rect2.top
 }
 
 function updateSpeedScale(delta) {
@@ -67,16 +62,16 @@ function handleStart() {
   setupGround()
   setupDino()
   setupCactus()
-  startScreenElem.classList.add("hide")
+  startScreenElem.classList.add('hide')
   window.requestAnimationFrame(update)
 }
 
 function handleLose(cactusElem) {
-  cactusElem.style.border = "1px solid"
+  cactusElem.style.border = '1px solid'
   setDinoLose()
   setTimeout(() => {
-    document.addEventListener("keydown", handleStart, { once: true })
-    startScreenElem.classList.remove("hide")
+    document.addEventListener('keydown', handleStart, { once: true })
+    startScreenElem.classList.remove('hide')
   }, 100)
 }
 

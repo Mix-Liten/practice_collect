@@ -23,7 +23,7 @@ socket.on('roomUsers', ({ room, users }) => {
 })
 
 // Message from server
-socket.on('message', (message) => {
+socket.on('message', message => {
   // console.log(message)
   outputMessage(message)
   // Scroll down
@@ -31,7 +31,7 @@ socket.on('message', (message) => {
 })
 
 // Message submit
-chatFormEle.addEventListener('submit', (e) => {
+chatFormEle.addEventListener('submit', e => {
   e.preventDefault()
   // Get message text
   let msg = e.target.elements.msg.value.trim()
@@ -63,7 +63,7 @@ function outputRoomName(room) {
 // Add users to DOM
 function outputUsers(users) {
   userListEle.innerHTML = ''
-  users.forEach((user) => {
+  users.forEach(user => {
     const li = document.createElement('li')
     li.innerHTML = '<i class="fas fa-user"></i>'
     li.append(user.username)

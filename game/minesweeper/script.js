@@ -59,7 +59,7 @@ const initGame = () => {
   buildBoard()
 }
 
-const startGame = (position) => {
+const startGame = position => {
   boardElement.innerHTML = ''
   const mode = GLOBAL_STATE.MODE
   const BOARD_SIZE = MODE_SETTING[mode].size

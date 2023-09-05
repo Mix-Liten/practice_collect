@@ -18,7 +18,5 @@ self.addEventListener('push', event => {
 
 self.addEventListener('notificationclick', event => {
   event.notification.close()
-  event.waitUntil(
-    clients.openWindow('http://localhost:3000/event.html')
-  )
+  event.waitUntil(clients.openWindow('http://localhost:3000/event.html'))
 })

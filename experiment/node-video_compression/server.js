@@ -14,7 +14,7 @@ app.use(
   fileUpload({
     tempFileDir: 'temp',
     useTempFiles: true,
-  })
+  }),
 )
 
 // Routes

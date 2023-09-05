@@ -25,54 +25,52 @@
     </form>
 
     <script>
-      const formEle = document.querySelector("form");
-      const inputTitleEle = document.getElementById("title");
-      const inputContentEle = document.getElementById("content");
-      formEle.addEventListener("submit", function () {
-        event.preventDefault();
-        fetch(
-          `/push?title=${inputTitleEle.value}&content=${inputContentEle.value}`
-        )
-          .then((res) => {
-            console.log("送出推播", res);
+      const formEle = document.querySelector('form')
+      const inputTitleEle = document.getElementById('title')
+      const inputContentEle = document.getElementById('content')
+      formEle.addEventListener('submit', function () {
+        event.preventDefault()
+        fetch(`/push?title=${inputTitleEle.value}&content=${inputContentEle.value}`)
+          .then(res => {
+            console.log('送出推播', res)
           })
           .finally(() => {
-            inputTitleEle.value = "";
-            inputContentEle.value = "";
-          });
-      });
+            inputTitleEle.value = ''
+            inputContentEle.value = ''
+          })
+      })
     </script>
 
     <script>
-      window.addEventListener("load", () => {
-        let reg = null;
+      window.addEventListener('load', () => {
+        let reg = null
         navigator.serviceWorker
-          .register("sw.js")
-          .then((swReg) => {
-            reg = swReg;
-            return swReg.pushManager.getSubscription();
+          .register('sw.js')
+          .then(swReg => {
+            reg = swReg
+            return swReg.pushManager.getSubscription()
           })
-          .then((sub) => {
+          .then(sub => {
             if (sub === null) {
               return reg.pushManager.subscribe({
                 userVisibleOnly: true,
                 applicationServerKey:
-                  "BOY1iVE8eA57ajJYwKmNhLaxehGlB-FuU0Aj7ifK62surEKz0c4kwEM0f4t4InWQl85_6Ul1IRjY8D1FB_JPZXw",
-              });
+                  'BOY1iVE8eA57ajJYwKmNhLaxehGlB-FuU0Aj7ifK62surEKz0c4kwEM0f4t4InWQl85_6Ul1IRjY8D1FB_JPZXw',
+              })
             }
           })
-          .then((newSub) => {
+          .then(newSub => {
             if (newSub) {
-              fetch("/add", {
+              fetch('/add', {
                 body: JSON.stringify(newSub),
-                method: "POST",
+                method: 'POST',
                 headers: {
-                  "content-type": "application/json",
+                  'content-type': 'application/json',
                 },
-              });
+              })
             }
-          });
-      });
+          })
+      })
     </script>
   </body>
 </html>

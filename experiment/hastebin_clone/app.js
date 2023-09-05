@@ -29,7 +29,7 @@ app.use(
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", "'unsafe-inline'"],
     },
-  })
+  }),
 )
 app.use(logger('dev'))
 app.use(express.json())

@@ -1,6 +1,6 @@
 let users = []
 
-await fetch("./users.json")
+await fetch('./users.json')
   .then(res => res.json())
   .then(data => {
     users = data.map(user => {

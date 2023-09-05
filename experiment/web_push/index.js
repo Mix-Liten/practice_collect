@@ -20,10 +20,10 @@ app.get('/push', (req, res) => {
   tokens.forEach(token => {
     const sendData = {
       title: title || '預設標題',
-      content: content || '預設內容'
+      content: content || '預設內容',
     }
-    webPush.sendNotification(token, JSON.stringify(sendData)).catch((err) => {
-      console.log('Server 推播失敗', err);
+    webPush.sendNotification(token, JSON.stringify(sendData)).catch(err => {
+      console.log('Server 推播失敗', err)
     })
   })
   res.end()

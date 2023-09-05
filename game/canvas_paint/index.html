@@ -11,12 +11,7 @@
   <body>
     <div class="wrapper">
       <div class="toolbar">
-        <a
-          href="javascript:void(0);"
-          id="open"
-          class="selected"
-          onclick="OpenImage()"
-        >
+        <a href="javascript:void(0);" id="open" class="selected" onclick="OpenImage()">
           <img src="./images/open-icon.png" alt="讀取image.png" />
         </a>
         <a href="javascript:void(0);" id="save" onclick="SaveImage()">
@@ -28,41 +23,23 @@
         <a href="javascript:void(0);" id="line" onclick="ChangeTool('line')">
           <img src="./images/line-icon.png" alt="線" />
         </a>
-        <a
-          href="javascript:void(0);"
-          id="rectangle"
-          onclick="ChangeTool('rectangle')"
-        >
+        <a href="javascript:void(0);" id="rectangle" onclick="ChangeTool('rectangle')">
           <img src="./images/rectangle-icon.png" alt="方形" />
         </a>
-        <a
-          href="javascript:void(0);"
-          id="circle"
-          onclick="ChangeTool('circle')"
-        >
+        <a href="javascript:void(0);" id="circle" onclick="ChangeTool('circle')">
           <img src="./images/circle-icon.png" alt="圓形" />
         </a>
-        <a
-          href="javascript:void(0);"
-          id="ellipse"
-          onclick="ChangeTool('ellipse')"
-        >
+        <a href="javascript:void(0);" id="ellipse" onclick="ChangeTool('ellipse')">
           <img src="./images/ellipse-icon.png" alt="橢圓" />
         </a>
-        <a
-          href="javascript:void(0);"
-          id="polygon"
-          onclick="ChangeTool('polygon')"
-        >
+        <a href="javascript:void(0);" id="polygon" onclick="ChangeTool('polygon')">
           <img src="./images/polygon-icon.png" alt="六角形" />
         </a>
       </div>
       <input type="color" id="colorPicker" />
       <canvas id="my-canvas" width="800" height="800"></canvas>
       <div id="img-data-div">
-        <a href="javascript:void(0);" id="img-file" download="image.png">
-          Download Image
-        </a>
+        <a href="javascript:void(0);" id="img-file" download="image.png"> Download Image </a>
       </div>
     </div>
 

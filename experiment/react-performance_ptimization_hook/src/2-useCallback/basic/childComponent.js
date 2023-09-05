@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 
 const ChildComponent = ({ number, setNumber }) => {
   console.log('From child component')
-  
+
   const onClickHandler = () => setNumber(number + 1)
 
   return (

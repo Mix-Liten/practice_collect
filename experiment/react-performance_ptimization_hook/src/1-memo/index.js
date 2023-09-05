@@ -6,7 +6,7 @@ const Memo = () => {
   return (
     <>
       <h1>Memo</h1>
-      
+
       <Basic />
       {/* <Pro /> */}
     </>

@@ -104,8 +104,8 @@ export const checkWin = board =>
     row.every(
       tile =>
         tile.status === TILE_STATUSES.NUMBER ||
-        (tile.mine && (tile.status === TILE_STATUSES.HIDDEN || tile.status === TILE_STATUSES.MARKED))
-    )
+        (tile.mine && (tile.status === TILE_STATUSES.HIDDEN || tile.status === TILE_STATUSES.MARKED)),
+    ),
   )
 
 export const checkLose = board => board.some(row => row.some(tile => tile.status === TILE_STATUSES.MINE))
@@ -117,7 +117,7 @@ const getMinePositions = (boardSize, numberOfMines, startPosition) => {
     { x: 0, y: 0 },
     { x: columnLen - 1, y: 0 },
     { x: 0, y: rowLen - 1 },
-    { x: columnLen - 1, y: rowLen - 1 }
+    { x: columnLen - 1, y: rowLen - 1 },
   ]
   while (positions.length < numberOfMines) {
     const position = {
