@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Floating_Emoji_Cursor</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="cursor"></div>
+
+    <script>
+      let body = document.body
+      let cursor = document.getElementById('cursor')
+
+      document.onmousemove = e => {
+        const { pageX, pageY } = e
+        // move cursor
+        cursor.style.left = `${pageX}px`
+        cursor.style.top = `${pageY}px`
+        // animate background
+        body.style.backgroundPosition = `${pageX / -12}px ${pageY / -12}px`
+        // add elements to body
+        let element = document.createElement('div')
+        element.className = 'element'
+        body.prepend(element)
+        // move elements randomly across x and y axis
+        const { x: cursorX, y: cursorY } = cursor.getBoundingClientRect()
+        element.style.left = `${cursorX}px`
+        element.style.top = `${cursorY - 10}px`
+        element.innerHTML = '❤️'
+        // element.innerHTML = randomText()
+
+        setTimeout(() => {
+          let directionX = Math.random() < 0.5 ? -1 : 1
+          let directionY = Math.random() < 0.5 ? -1 : 1
+
+          element.style.opacity = 1
+          element.style.transition = 'all 1s'
+          element.style.left = `${parseInt(element.style.left) - Math.random() * 250 * directionX}px`
+          element.style.top = `${parseInt(element.style.top) - Math.random() * 250 * directionY}px`
+          element.style.transform = `scale(0.25)`
+
+          // remove element
+          setTimeout(() => {
+            element.style.opacity = 0
+          }, 0.8e3)
+          setTimeout(() => {
+            element.remove()
+          }, 1.2e3)
+        }, 10)
+
+        // function randomText() {
+        //   const source = 'abcdefghijklmnopqrstuvwxyz1234567890'.split('')
+        //   let letter = source[Math.floor(Math.random() * source.length)]
+        //   return letter
+        // }
+      }
+    </script>
+  </body>
+</html>
