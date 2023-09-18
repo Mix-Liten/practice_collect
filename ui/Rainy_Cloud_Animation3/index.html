@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Rainy_Cloud_Animation3</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="cloud"></div>
+    </div>
+
+    <script>
+      let cloud = document.getElementsByClassName('cloud')[0]
+      const preLeft = cloud.getBoundingClientRect().width - 10
+
+      function rain() {
+        let element = document.createElement('div')
+        let left = Math.floor(Math.random() * preLeft) + 5
+        let size = Math.random() * 1.5
+        let duration = Math.random() * 1
+
+        element.classList.add('drop')
+        element.style.left = `${left}px`
+        element.style.fontSize = `${size + 0.5}em`
+        element.style.animationDuration = `${duration + 1}s`
+        element.innerText = randomText()
+
+        cloud.appendChild(element)
+
+        setTimeout(() => {
+          cloud.removeChild(element)
+        }, 2e3)
+      }
+
+      setInterval(() => {
+        rain()
+      }, 75)
+
+      function randomText() {
+        const source = '!@#$%^&*()_+=:;{}[]-~<>/?'.split('')
+        let letter = source[Math.floor(Math.random() * source.length)]
+        return letter
+      }
+    </script>
+  </body>
+</html>
