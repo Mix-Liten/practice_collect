@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Sliding_Tabview</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="tabs">
+        <input type="radio" name="group" id="home" checked />
+        <input type="radio" name="group" id="about" />
+        <input type="radio" name="group" id="settings" />
+        <input type="radio" name="group" id="security" />
+        <div class="icon">
+          <label for="home"><ion-icon name="home-outline"></ion-icon></label>
+          <label for="about"><ion-icon name="person-outline"></ion-icon></label>
+          <label for="settings"><ion-icon name="settings-outline"></ion-icon></label>
+          <label for="security"><ion-icon name="lock-closed-outline"></ion-icon></label>
+          <div class="indicator"></div>
+        </div>
+        <div class="content">
+          <div class="contentBox" for="home">
+            <h2>Home</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit iusto quibusdam libero nostrum ut laborum.
+              Earum optio commodi cupiditate vitae, consectetur voluptatem. Architecto, optio quos?
+            </p>
+          </div>
+          <div class="contentBox" for="about">
+            <h2>About</h2>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil fugiat laboriosam tempora ullam, qui
+              explicabo, quos, alias exercitationem repudiandae a sunt. Minima recusandae perspiciatis voluptatem
+              impedit eos possimus ipsum a?
+            </p>
+          </div>
+          <div class="contentBox" for="settings">
+            <h2>Settings</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eaque odit impedit facere ipsam rerum
+              quaerat a excepturi? Aperiam minus fugit non. Tempora, itaque iure.
+            </p>
+          </div>
+          <div class="contentBox" for="security">
+            <h2>Security</h2>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius sed perspiciatis corrupti rerum vero optio,
+              ea maxime placeat enim voluptate id atque veritatis necessitatibus in nobis esse aliquid deleniti
+              voluptates voluptas excepturi laborum consequuntur cupiditate quisquam. Amet tenetur excepturi laboriosam.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>

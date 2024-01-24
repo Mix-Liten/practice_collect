@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --clr: #a12db5;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #222;
+}
+
+.container {
+  width: 600px;
+  height: 400px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tabs {
+  position: relative;
+  width: 80px;
+  padding: 40px 0;
+}
+
+.tabs input {
+  appearance: none;
+  display: none;
+}
+
+.tabs .icon {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs .icon label {
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  line-height: 90px;
+  font-size: 2em;
+  color: #eee;
+  opacity: 0.25;
+  transition: 0.5s;
+  cursor: pointer;
+  z-index: 2;
+  /* background-color: #fff5; */
+}
+
+.tabs input:nth-child(1):checked ~ .icon label:nth-child(1),
+.tabs input:nth-child(2):checked ~ .icon label:nth-child(2),
+.tabs input:nth-child(3):checked ~ .icon label:nth-child(3),
+.tabs input:nth-child(4):checked ~ .icon label:nth-child(4) {
+  opacity: 1;
+  transition-delay: 0.3s;
+}
+
+.indicator {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-color: var(--clr);
+  z-index: 1;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  transition: 0.5s;
+}
+
+.indicator::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border-bottom-right-radius: 20px;
+  box-shadow: 8px 8px 0 8px var(--clr);
+}
+
+.indicator::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border-top-right-radius: 20px;
+  box-shadow: 8px -8px 0 8px var(--clr);
+}
+
+.tabs input:nth-child(1):checked ~ .icon .indicator {
+  top: 0;
+}
+
+.tabs input:nth-child(2):checked ~ .icon .indicator {
+  top: 25%;
+}
+
+.tabs input:nth-child(3):checked ~ .icon .indicator {
+  top: 50%;
+}
+
+.tabs input:nth-child(4):checked ~ .icon .indicator {
+  top: 75%;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 80px;
+  width: 520px;
+  height: 400px;
+  background-image: linear-gradient(90deg, var(--clr), #df0d54);
+  border-radius: 20px;
+}
+
+.content .contentBox {
+  position: absolute;
+  inset: 0;
+  padding: 50px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+}
+
+.tabs input:nth-child(1):checked ~ .content .contentBox:nth-child(1),
+.tabs input:nth-child(2):checked ~ .content .contentBox:nth-child(2),
+.tabs input:nth-child(3):checked ~ .content .contentBox:nth-child(3),
+.tabs input:nth-child(4):checked ~ .content .contentBox:nth-child(4) {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.3s;
+}
+
+.content .contentBox h2,
+.content .contentBox p {
+  color: #eee;
+}
