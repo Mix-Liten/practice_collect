@@ -1,0 +1,98 @@
+/* Demo styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  justify-items: center;
+  align-content: flex-start;
+  font-family: system-ui, sans-serif;
+  padding: 1.5rem;
+  background-color: #222;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+  padding-block: 1rem;
+  color: #eee;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-inline: auto;
+  gap: 1rem;
+}
+
+h2 {
+  width: 100%;
+  text-align: center;
+  color: #eee;
+  font-size: 3.5em;
+  margin-block: 2rem;
+}
+
+div {
+  --size: clamp(5rem, 30vw, 10rem);
+  width: var(--size);
+  height: var(--size);
+  background: #eee;
+}
+
+div:nth-child(3) {
+  background: hotpink;
+}
+
+div:nth-child(4) {
+  background: cornflowerblue;
+}
+
+div:nth-child(5) {
+  background: teal;
+}
+
+div:last-child {
+  background: #aaa;
+}
+
+input[type='color'] {
+  --size: 2em;
+  flex-shrink: 0;
+  appearance: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  height: var(--size);
+  width: var(--size);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+}
+
+input[type='color' i]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type='color' i]::-webkit-color-swatch {
+  border-radius: 50%;
+}
+
+input[type='color' i]::-moz-color-swatch {
+  border-radius: 50%;
+}
+
+::-webkit-color-swatch,
+::-moz-color-swatch {
+  border-color: transparent;
+}
