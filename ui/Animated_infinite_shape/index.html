@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated_infinite_shape</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="circle circle-left"></div>
+      <div class="circle circle-right"></div>
+    </div>
+
+    <script>
+      const cl = document.querySelector('.circle-left')
+      const cr = document.querySelector('.circle-right')
+
+      for (let i = 0; i <= 80; i++) {
+        const rippleLeft = document.createElement('span')
+        rippleLeft.style.setProperty('--i', i)
+        cl.appendChild(rippleLeft)
+
+        const rippleRight = document.createElement('span')
+        rippleRight.style.setProperty('--i', i)
+        cr.appendChild(rippleRight)
+      }
+    </script>
+  </body>
+</html>
