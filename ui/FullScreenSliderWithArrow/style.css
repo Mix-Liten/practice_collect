@@ -97,25 +97,25 @@ body {
 /* Backgorund Images */
 
 .slide:first-child {
-  background: url('https://source.unsplash.com/RyRpq9SUwAU/1600x900') no-repeat center top/cover;
+  background: url('../../images/static/autumn.jpg') no-repeat center top/cover;
 }
 
 .slide:nth-child(2) {
-  background: url('https://source.unsplash.com/BeOW_PJjA0w/1600x900') no-repeat center top/cover;
+  background: url('../../images/static/bloom.jpg') no-repeat center top/cover;
 }
 
 .slide:nth-child(3) {
-  background: url('https://source.unsplash.com/TMOeGZw9NY4/1600x900') no-repeat center top/cover;
+  background: url('../../images/static/corridor.jpg') no-repeat center top/cover;
 }
 
 .slide:nth-child(4) {
-  background: url('https://source.unsplash.com/yXpA_eCbtzI/1600x900') no-repeat center top/cover;
+  background: url('../../images/static/forest.jpg') no-repeat center top/cover;
 }
 
 .slide:nth-child(5) {
-  background: url('https://source.unsplash.com/ULmaQh9Gvbg/1600x900') no-repeat center top/cover;
+  background: url('../../images/static/landscape.jpg') no-repeat center top/cover;
 }
 
 .slide:nth-child(6) {
-  background: url('https://source.unsplash.com/ggZuL3BTSJU/1600x900') no-repeat center center/cover;
+  background: url('../../images/static/recipe.jpg') no-repeat center center/cover;
 }
