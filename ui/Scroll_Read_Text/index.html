@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll_Read_Text</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="box">
+      <h2>Modern Text Scroll Animation</h2>
+      <p class="text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quaerat, eaque exercitationem repudiandae suscipit
+        doloribus vero eum, et eligendi, quisquam ducimus quas possimus nisi ratione ut nemo. Quasi non, reprehenderit
+        nemo minus dolorem provident, quibusdam distinctio consectetur maxime recusandae ipsam?
+      </p>
+    </div>
+
+    <script>
+      const textElement = document.querySelector('.text')
+      const textContent = textElement.textContent.trim()
+      textElement.innerHTML = ''
+
+      for (const char of textContent) {
+        const text = document.createElement('span')
+        text.textContent = char
+        textElement.appendChild(text)
+      }
+
+      const texts = textElement.querySelectorAll('span')
+      window.addEventListener('scroll', () => {
+        const scrollDistance = window.scrollY
+        texts.forEach((te, i) => {
+          // 這裡的計算方式是根據每個文字的 index 乘十，當滾動高度高過該文字的值時加入 active class
+          // 但是要注意，這個範例的全高是用 body 的 min-height 設置的，且根據範例的文字數量調整過
+          // 即使如此，不同裝置的螢幕高度不同，應該還是有許多裝置會發生 提早高亮完全部的字 和 滾到底還沒高亮完全部的字
+          if (scrollDistance >= (i + 1) * 10) {
+            te.classList.add('active')
+          } else {
+            te.classList.remove('active')
+          }
+        })
+      })
+    </script>
+  </body>
+</html>
