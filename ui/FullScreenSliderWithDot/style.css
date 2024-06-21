@@ -71,7 +71,6 @@
   justify-content: flex-start;
   align-items: flex-end;
 
-  background-image: var(--img);
   background-size: cover;
   background-position: left;
   opacity: 0;
@@ -82,6 +81,22 @@
   &:nth-child(odd) {
     background-position: right;
     clip-path: circle(0% at 100% 50%);
+  }
+
+  &:nth-child(1) {
+    background-image: url('../../images/static/autumn.jpg');
+  }
+  &:nth-child(2) {
+    background-image: url('../../images/static/bloom.jpg');
+  }
+  &:nth-child(3) {
+    background-image: url('../../images/static/corridor.jpg');
+  }
+  &:nth-child(4) {
+    background-image: url('../../images/static/landscape.jpg');
+  }
+  &:nth-child(5) {
+    background-image: url('../../images/static/forest.jpg');
   }
 }
 
