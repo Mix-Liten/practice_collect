@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #222;
+
+  &:-webkit-full-screen {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.container input {
+  appearance: none;
+}
+
+.container .dots {
+  position: absolute;
+  bottom: 70px;
+  z-index: 1000;
+  display: flex;
+  gap: 6px;
+}
+
+.container .dots label {
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  opacity: 0.5;
+  border: 2px solid #222;
+}
+
+.container input:nth-child(1):checked ~ .dots label:nth-child(1),
+.container input:nth-child(2):checked ~ .dots label:nth-child(2),
+.container input:nth-child(3):checked ~ .dots label:nth-child(3),
+.container input:nth-child(4):checked ~ .dots label:nth-child(4),
+.container input:nth-child(5):checked ~ .dots label:nth-child(5) {
+  opacity: 1;
+}
+
+.container .slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.container .slider .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  background-image: var(--img);
+  background-size: cover;
+  background-position: left;
+  opacity: 0;
+  clip-path: circle(0% at 0% 50%);
+  transition: 1200ms;
+  transition-delay: 0s;
+
+  &:nth-child(odd) {
+    background-position: right;
+    clip-path: circle(0% at 100% 50%);
+  }
+}
+
+.container input:nth-child(1):checked ~ .slider .slide:nth-child(1),
+.container input:nth-child(2):checked ~ .slider .slide:nth-child(2),
+.container input:nth-child(3):checked ~ .slider .slide:nth-child(3),
+.container input:nth-child(4):checked ~ .slider .slide:nth-child(4),
+.container input:nth-child(5):checked ~ .slider .slide:nth-child(5) {
+  background-position: center;
+  opacity: 1;
+  clip-path: circle(150% at 50% 50%);
+  transition-delay: 800ms;
+}
+
+.container .slider .slide .content {
+  position: relative;
+  margin: 0 20px 120px 20px;
+  padding: 10px 25px 25px 25px;
+  max-width: 550px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(15px);
+}
+
+.container .slider .slide .content h2 {
+  color: #fff;
+  font-size: 3em;
+}
+
+.container .slider .slide .content p {
+  color: #fff;
+}
+
+.fullscreen {
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  color: #fff;
+  font-size: 48px;
+  line-height: 48px;
+  height: 48px;
+  z-index: 5;
+  mix-blend-mode: difference;
+}
+
+.play {
+  &::before {
+    content: '\25B6';
+    cursor: pointer;
+    display: inline-block;
+    height: 48px;
+  }
+}
+
+.close {
+  display: none;
+
+  &::before {
+    content: '\2715';
+    cursor: pointer;
+    display: inline-block;
+    height: 48px;
+  }
+}
